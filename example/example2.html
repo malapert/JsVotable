@@ -6,7 +6,17 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="../node_modules/requirejs/require.js"></script>
     <script src="../votable.min.js"></script>
-    <script type="text/javascript" src="main2.js"> </script>
+    <script type="text/javascript">
+        window.onload = function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', "http://axel.u-strasbg.fr/HiPSCatService/I/337/gaia/metadata.xml", false);
+            xhr.send(null);
+
+            var response = xhr.responseXML;
+            var vot = new votable(response);
+        }
+
+    </script>
     <style>
         table {
             font-family: arial, sans-serif;
