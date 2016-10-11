@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<VOTABLE version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.ivoa.net/xml/VOTable/v1.1" xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.1 http://www.ivoa.net/xml/VOTable/VOTable-1.1.xsd">
+<RESOURCE type="results"><DESCRIPTION>DFBS - Digitized First Byurakan Survey</DESCRIPTION>
+<INFO name="QUERY_STATUS" value="OK"/>
+<PARAM name="POS" datatype="char" unit="deg" value="10.6847083,41.26875"/>
+<PARAM name="SIZE" datatype="double" unit="deg" value="1,1"/>
+<PARAM name="FORMAT" datatype="char" value="all"/>
+<PARAM name="INTERSECT" datatype="char" value="OVERLAPS"/>
+<TABLE nrows="3"><PARAM name="Instrument" ucd="meta.id;instr" datatype="char" value="Photographic Focus / Epson Expression 1680 Pro"/>
+<PARAM name="Telescope" ucd="meta.id;instr.tel" datatype="char" value="1.02 m Schmidt using 1.5 deg. prism"/>
+<PARAM name="Format" ucd="VOX:Image_Format" datatype="char" arraysize="*" value="image/fits"/>
+<PARAM name="CoordSystem" ucd="VOX:STC_CoordRefFrame" datatype="char" arraysize="*" value="FK5"/>
+<PARAM name="Equinox" ucd="VOX:STC_CoordEquinox" datatype="double" value="2000"/>
+<PARAM name="Projection" ucd="VOX:WCS_CoordProjection" datatype="char" arraysize="3" value="TAN"/>
+<PARAM name="SCALE" ucd="VOX:Image_Scale" datatype="double" arraysize="*" unit="deg/pix" value="0.0004305 0.0004305"/>
+<FIELD name="Image Title" ucd="VOX:Image_Title" datatype="char" arraysize="*" unit="--"/>
+<FIELD name="Date" ucd="VOX:Image_MJDateObs" datatype="double" unit="mjd"/>
+<FIELD name="RA" ucd="POS_EQ_RA_MAIN" datatype="double" unit="deg"/>
+<FIELD name="DEC" ucd="POS_EQ_DEC_MAIN" datatype="double" unit="deg"/>
+<FIELD name="NAXES" ucd="VOX:Image_Naxes" datatype="int" unit="--"/>
+<FIELD name="NAXIS" ucd="VOX:Image_Naxis" datatype="int" arraysize="*" unit="pix x pix"/>
+<FIELD name="CRPIX" ucd="VOX:WCS_CoordRefPixel" datatype="double" arraysize="*" unit="pix"/>
+<FIELD name="CRVAL" ucd="VOX:WCS_CoordRefValue" datatype="double" arraysize="*" unit="--"/>
+<FIELD name="File" ucd="VOX:Image_AccessReference" datatype="char" arraysize="*" unit="--"/>
+<DATA><TABLEDATA><TR><TD>ivo://vopdc.obspm/dfbs/0809</TD>
+<TD>41949.5</TD>
+<TD>10.139354</TD>
+<TD>39.078942</TD>
+<TD>2</TD>
+<TD>9601 9602</TD>
+<TD>4800.5 4801</TD>
+<TD>10.139354 39.078942</TD>
+<TD>http://voparis-srv.obspm.fr/vo/survey/dfbs/dfbs+39/fbs0809_cor.fits.gz</TD>
+</TR>
+<TR><TD>ivo://vopdc.obspm/dfbs/1042</TD>
+<TD>42305.5</TD>
+<TD>10.331433</TD>
+<TD>43.24512</TD>
+<TD>2</TD>
+<TD>9601 9602</TD>
+<TD>4800.5 4801</TD>
+<TD>10.331433 43.24512</TD>
+<TD>http://voparis-srv.obspm.fr/vo/survey/dfbs/dfbs+43/fbs1042_cor.fits.gz</TD>
+</TR>
+<TR><TD>ivo://vopdc.obspm/dfbs/1117</TD>
+<TD>42313.5</TD>
+<TD>10.356043</TD>
+<TD>39.229848</TD>
+<TD>2</TD>
+<TD>9601 9602</TD>
+<TD>4800.5 4801</TD>
+<TD>10.356043 39.229848</TD>
+<TD>http://voparis-srv.obspm.fr/vo/survey/dfbs/dfbs+39/fbs1117_cor.fits.gz</TD>
+</TR>
+</TABLEDATA>
+</DATA>
+</TABLE>
+</RESOURCE>
+</VOTABLE>

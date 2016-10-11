@@ -47,7 +47,7 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
         AbstractNode.prototype.constructor.call(this, childNode);
         var element = childNode.childNodes[0];
         if (element!=null && element.nodeType == 3) {
-            this.value = element.wholeText.trim();
+            this.value = (element.textContent == null) ? null : element.textContent.trim();
         }
     };
 
@@ -95,7 +95,7 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
      * Returns the ref value.
      * @returns {?String} the ref value or null when no ref attribute.
      */
-    Info.prototype.String = function() {
+    Info.prototype.ref = function() {
         return info["ref"];
     };
 

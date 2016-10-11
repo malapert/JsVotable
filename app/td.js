@@ -47,7 +47,7 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
      */
     var Td = function(childNode) {
         AbstractNode.prototype.constructor.call(this, childNode);
-        this.value = childNode.textContent.trim();
+        this.value = (childNode.textContent == null) ? null : childNode.textContent.trim();
     };
 
     Utils.inherits(AbstractNode , Td );

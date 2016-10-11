@@ -69,6 +69,7 @@ define(["./utils","./abstractNode", "./definitions","./info","./resource", "./de
         }
         var childNode = xml.documentElement;
         AbstractNode.prototype.constructor.call(this, childNode);
+        var result = parseVotableTag(childNode);
         this.definitions = result[0];
         this.infos = result[1];
         this.resources = result[2];

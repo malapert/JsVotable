@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VOTABLE version="1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.ivoa.net/xml/VOTable/v1.2"
+  xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.2 http://www.ivoa.net/xml/VOTable/v1.2">
+ <DESCRIPTION>
+   VizieR Astronomical Server vizier.u-strasbg.fr
+    Date: 2016-10-11T15:48:30 [V1.99+ (14-Oct-2013)]
+   Explanations and Statistics of UCDs:			See LINK below
+   In case of problem, please report to:	cds-question@unistra.fr
+ </DESCRIPTION>
+<!-- VOTable description at http://www.ivoa.net/Documents/latest/VOT.html -->
+<INFO ID="VERSION" name="votable-version" value="1.99+ (14-Oct-2013)"/>
+<INFO ID="Ref" name="-ref" value="VIZ57fd09b9b089"/>
+<INFO ID="MaxTuples" name="-out.max" value="50"/>
+<INFO name="queryParameters" value="24">
+-oc.form=dec
+-out.max=50
+-out.add=_r
+-out.add=_RAJ,_DEJ
+-sort=_r
+-nav=cat:J/MNRAS/362/1006&amp;tab:{J/MNRAS/362/1006/tables}&amp;key:source=J/MNRAS/362/1006&amp;HTTPPRM:&amp;-out.max=50&amp;-out.form=HTML Table&amp;-out.add=_r&amp;-out.add=_RAJ,_DEJ&amp;-sort=_r&amp;-oc.form=sexa&amp;
+-c.eq=J2000
+-c.r=  2
+-c.u=arcmin
+-c.geom=r
+-source=J/MNRAS/362/1006/tables
+-order=I
+-out=[TPS2005]
+-out=RAJ2000
+-out=DEJ2000
+-out=Per
+-out=Per2
+-out=Per3
+-out=Bmax
+-out=Vmax
+-out=Dp
+-out=n_Dp
+-out=Ds
+-out=Notes
+</INFO>
+
+<!--
+Execution Reports
+ -->
+
+<RESOURCE ID="yCat_73621006" name="J/MNRAS/362/1006">
+  <DESCRIPTION>Eclipsing binaries in eastern spiral arm of M31 (Todd+, 2005)</DESCRIPTION>
+  <COOSYS ID="J2000" system="eq_FK5" equinox="J2000"/>
+  <TABLE ID="J_MNRAS_362_1006_tables" name="J/MNRAS/362/1006/tables">
+    <DESCRIPTION>EBs in fields 1-4 of the Andromeda galaxy</DESCRIPTION>
+    <!-- Definitions of GROUPs and FIELDs -->
+    <FIELD name="_RAJ2000" ucd="pos.eq.ra" ref="J2000" datatype="double" width="10" precision="6" unit="deg"><!-- ucd="POS_EQ_RA" -->
+      <DESCRIPTION>Right ascension (FK5, Equinox=J2000.0) (computed by VizieR, not part of the original data)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="_DEJ2000" ucd="pos.eq.dec" ref="J2000" datatype="double" width="10" precision="6" unit="deg"><!-- ucd="POS_EQ_DEC" -->
+      <DESCRIPTION>Declination (FK5, Equinox=J2000.0) (computed by VizieR, not part of the original data)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="[TPS2005]" ucd="meta.record" datatype="char" arraysize="10*"><!-- ucd="ID_MAIN" -->
+      <DESCRIPTION>Sequential number</DESCRIPTION>
+    </FIELD>
+    <FIELD name="RAJ2000" ucd="pos.eq.ra;meta.main" ref="J2000" datatype="double" width="12" precision="6" unit="deg"><!-- ucd="POS_EQ_RA_MAIN" -->
+      <DESCRIPTION>Right ascension (J2000)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="DEJ2000" ucd="pos.eq.dec;meta.main" ref="J2000" datatype="double" width="13" precision="7" unit="deg"><!-- ucd="POS_EQ_DEC_MAIN" -->
+      <DESCRIPTION>Declination (J2000)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="Per" ucd="time.period" datatype="double" width="8" precision="5" unit="d"><!-- ucd="TIME_PERIOD" -->
+      <DESCRIPTION>Period</DESCRIPTION>
+    </FIELD>
+    <FIELD name="Per2" ucd="time.period" datatype="float" width="7" precision="4" unit="d"><!-- ucd="TIME_PERIOD" -->
+      <DESCRIPTION>? Second period</DESCRIPTION>
+      <VALUES null="NaN" />
+    </FIELD>
+    <FIELD name="Per3" ucd="time.period" datatype="float" width="7" precision="4" unit="d"><!-- ucd="TIME_PERIOD" -->
+      <DESCRIPTION>? Third period</DESCRIPTION>
+      <VALUES null="NaN" />
+    </FIELD>
+    <FIELD name="Bmax" ucd="phot.mag;em.opt.B" datatype="float" width="5" precision="2" unit="mag"><!-- ucd="PHOT_MAG_B" -->
+      <DESCRIPTION>Maximum B magnitude</DESCRIPTION>
+    </FIELD>
+    <FIELD name="Vmax" ucd="phot.mag;em.opt.V" datatype="float" width="5" precision="2" unit="mag"><!-- ucd="PHOT_MAG_V" -->
+      <DESCRIPTION>? Maximum V magnitude</DESCRIPTION>
+      <VALUES null="NaN" />
+    </FIELD>
+    <FIELD name="Dp" ucd="src.var.amplitude" datatype="float" width="5" precision="2"><!-- ucd="VAR_AMPLITUDE_VALUE" -->
+      <DESCRIPTION>? Depth of the primary eclipse in ADU/s</DESCRIPTION>
+      <VALUES null="NaN" />
+    </FIELD>
+    <FIELD name="n_Dp" ucd="meta.note" datatype="char" arraysize="1"><!-- ucd="NOTE" -->
+      <DESCRIPTION>[abc] Note on Depth (1)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="Ds" ucd="src.var.amplitude" datatype="float" width="4" precision="1"><!-- ucd="VAR_AMPLITUDE_VALUE" -->
+      <DESCRIPTION>? Depth of the secondary eclipse in ADU/s</DESCRIPTION>
+      <VALUES null="NaN" />
+    </FIELD>
+    <FIELD name="Notes" ucd="meta.note" datatype="char" arraysize="24*"><!-- ucd="NOTE" -->
+      <DESCRIPTION>Notes</DESCRIPTION>
+    </FIELD>
+<DATA><BINARY><STREAM encoding="base64">
+QCY+cmo5EidARLEeOn2qTwAAAAlmMUJFQjE0NDhAJj5yajkSKEBEsR46fapPQAlaHKwIMSj/
+/////////0GZmZpBmj1xQkgAACBCKAAAAAAADVYxMDU1MCBESVJFQ1RAJjmLZolaP0BEspQx
+esxOAAAACWYxQkVCMTUwMEAmOYtmiVo/QESylDF6zE5ACsTQE6kqMf//////////QajhSEGn
+wo9A5mZmYUCDMzMAAAAMVjk5MDQgRElSRUNUQCZVYM1YnDBARLk2PXn17QAAAAlmMUJFQjEx
+NDFAJlVgzVicMUBEuTY9efXuP/QuscQyylg/ob2l/////0GsZmZBreuFQAZmZiA/ZmZmAAAA
+AEAmUQqDWFZJQES+tqwo0HkAAAAJZjFCRUIxMjA1QCZRCoNYVklARL62rCjQeUAMZckdFOO+
+//////////9BmVwpQZnCj0JgAAAgQigAAAAAAA1WMTI2NTAgRElSRUNUQCZn1wo9cKNARL5r
+eE3XmgAAAAlmMUJFQjE1OThAJmfXCj1wo0BEvmt4TdeaQBcCqZML4OD//////////0GaAAD/
+////QdgAACBB2AAAAAAAEURFQiwgVjkwMzcgRElSRUNUQCXsT7xHiyBARK6h+69/+wAAAAlm
+MUJFQjIyMjhAJexPvEeLIEBErqH7r3/8QAFp4bCJoCj//////////0Gi4UhBorhSQUAAACBB
+CAAAAAAAAEAl/6vlPU2wQEStg9PWBUIAAAAJZjFCRUIyMDY1QCX/q+U9Ta9ARK2D09YFQkAG
+DBVMmF8I//////////9BqvXDQapmZkDGZmYgQEzMzQAAAABAJeOGwiaAm0BEsRxDLKV5AAAA
+CWYxQkVCMjM0OUAl44bCJoCcQESxHEMspXpAAvbItDlYEUAYNhH/////QaPCj0GkZmZBUAAA
+IEFAAAAAAAAAQCaBGCqZML9ARMOKEABv2QAAAAhmMUJFQjI5NEAmgRgqmTC9QETDihAAb9hA
+FP987ZFodP//////////QZzMzUGdMzNBYAAAIEFQAAAAAAASVjYxMDUgRElSRUNULCBERUIt
+QCZyvCSXR2hARMKGqtlFIQAAAAhmMUJFQjU3NUAmcrwkl0dnQETChqrZRSFAHAAAAAAAAf//
+////////QaJ64UGgj1xBgAAAIEFgAAAAAAAMVjQ5MDMgRElSRUNUQCZgkujtBZhARLu+yquK
+XAAAAAhmMUJFQjkyNUAmYJLo7QWYQES7vsqrilxAJxWBBiTdMP//////////QZYo9kGVcKRC
+SAAAIEHwAAAAAAANVjEzOTQ0IERJUkVDVEAmatxdY4hmQES7/Xg2il0AAAAIZjFCRUI3MTZA
+JmrcXWOIZUBEu/14NopeQAb6rNnoPkP//////////0GhXClBoo9cQbAAACBBMAAAAAAADVYx
+NDY2MiBESVJFQ1RAJkz987ZFoEBEvpAyiRkBAAAACWYxQkVCMTI2MEAmTP3ztkWhQES+kDKJ
+GQBAAFfb9If8uv//////////QZ564UGfXClBgAAAIEEwAAAAAAANVjEyMjYyIERJUkVDVEAm
+GxoT7xHjQETCcAC6adoAAAAJZjFCRUIxODU0QCYbGhPvEeJARMJwALpp2z/78AaNuLrI////
+//////9BqAAAQago9kDwAAAgQJzMzQAAAABAJh0/fO2RaEBEry/eW7IeAAAACWYxQkVCMTgx
+M0AmHT987ZFoQESvL95bsh5ABbJhfBvaUv//////////Qaaj10GmPXFBYAAAIEDmZmYAAAAA
+QCZ6bPQfISxARMA/6B2jBwAAAAhmMUJFQjQxN0Amemz0HyEtQETAP+gdowdAAXqs2eg+Q///
+////////QanrhUGozM1BAzMzIEDGZmYAAAAAQCXu36Q/5cdARLGdQlPw0AAAAAlmMUJFQjIx
+ODhAJe7fpD/lyEBEsZ1CU/DRQAUC3gDRtxj//////////0GqKPZBqeuFQJAAACBAYAAAAAAA
+AEAmU/7oYTYzQES3c2E4iK0AAAAJZjFCRUIxMTUyQCZT/uhhNjNARLdzYTiIrUABI24uscQz
+//////////9Bo3CkQaRmZkCwAAAgQLAAAAAAAARERUItQCZQWHk92X9ARL+Dp5AUPgAAAAlm
+MUJFQjEyMTVAJlBYeT3Zf0BEv4OnkBQ+QAJoPkJa7mT//////////0GjMzNBo3CkQUAAAGFB
+IAAAAAAADVYxMjU5NCBESVJFQ1RAJoBCFQawrEBEwnUG+z1TAAAACGYxQkVCMzA0QCaAQhUG
+sKxARMJ1Bvs9Uj/rckdFOO82//////////9BqZmaQao9cUCAAAAgQGAAAAAAAABAJj/DYRNA
+T0BEsgwwGJzGAAAACWYxQkVCMTQyOUAmP8NhE0BOQESyDDAYnMZAAnA6+36RAP//////////
+QaK4UkGko9dBiAAAIEEoAAAAAAANVjEwNzMyIERJUkVDVEAmQZ34FMDJQESzilqRLjEAAAAJ
+ZjFCRUIxNDA3QCZBnfgUwMhARLOKWpEuMT/9AaNuLrHF//////////9BpqPXQaY9cUCWZmYg
+P8AAAAAAAABAJeO2RaHKwEBEv7QkX1rZAAAACWYxQkVCMjM1N0Al47ZFocrAQES/tCRfWtlA
+CVEZzgdfcf//////////QaThSEGlXClBNmZmIEEmZmYAAAAAQCZf2Tl7BDtARLvaBDSJuwAA
+AAhmMUJFQjkzOUAmX9k5ewQ7QES72gQ0ibtAAx1JUYKplP//////////QalcKUGoPXFAwAAA
+IECgAAAAAAADREVCQCZnnsnL2CBARLqXR2gsyQAAAAhmMUJFQjc4OEAmZ57Jy9ghQES6l0do
+LMhAHKBBiTdLyEDnU/j/////Qago9kGnmZpAgAAAYkBAAAAAAAANVjE0NDM5IERJUkVDVEAm
+eHv45nfhQETBU2mq7j0AAAAIZjFCRUI0NjdAJnh7+OZ34EBEwVNpqu49QAAdsi0OVgX/////
+/////0GhrhRBoeuFQQAAACBBAAAAAAAAAEAmSBkfRCFQQES2Hzh6sqwAAAAJZjFCRUIxMzEw
+QCZIGR9EIVBARLYfOHqyrD/7w8nuy/sX//////////9BqUeuQaseuECJmZogQImZmgAAAABA
+JkxOGNlcbkBEtLAZxwnNAAAACWYxQkVCMTI2MkAmTE4Y2VxuQES0sBnHCc1ABUjopx3mnP//
+////////QatwpEGrCj1AQAAAIEAAAAAAAAAAQCZdBZkNyjNARLiySQSdZQAAAAhmMUJFQjk4
+OUAmXQWZDco0QES4skkEnWU/+hIFvAGjb///////////QaPXCkGlwo9BEAAAIEEQAAAAAAAA
+QCaKxoT7xHlARMQlIMJHHgAAAAhmMUJFQjIwN0AmisaE+8R4QETEJSDCRx8/+t2X9itq6f//
+////////QatcKUGr1wpAMzMzIEAzMzMAAAAAQCY6YGR9EINARLPV1FPZggAAAAlmMUJFQjE0
+OTFAJjpgZH0QhEBEs9XUU9mDQB8ZmZmZmZv//////////0Gk9cNBpPXDQQzMzSBAoAAAAAAA
+AEAmeTw2ETQEQETCiLl3hXIAAAAIZjFCRUI0NTJAJnk8NhE0BEBEwoi5d4VyQBEIMSbpeNb/
+/////////0Gi4UhBohR7QQAAACBBAAAAAAAADFY1NDQzIERJUkVDVEAmfppIXNe3QETBoJTW
+6/EAAAAIZjFCRUIzMjFAJn6aSFzXuEBEwaCU1uvyQAVY4hllK9X//////////0GhHrhBoHrh
+QRAAACBBAAAAAAAAB0JIR1o4OC1AJndHaCzIb0BEwoWcjJMgAAAACGYxQkVCNTA0QCZ3R2gs
+yG5ARMKFnIyTIEAHMImgJ1JV//////////9BomZmQaKPXEDDMzMgQMAAAAAAAABAJorUuAwD
+00BEwMcJzZeGAAAACGYxQkVCMjA0QCaK1LgMA9JARMDHCc2XhkAXsY/FBIFw//////////9B
+qvXDQalwpP////9i/////wAAAANERUJAJmqLiX0zeUBEvYsAAlSEAAAACGYxQkVCNzMyQCZq
+i4l9M3hARL2LAAJUhUAPEjopx3mo//////////9Bo4UfQaTMzUGYAAAgQSAAAAAAAA1WMTQ2
+NTMgRElSRUNUQCYjjmd+BS9ARLPjiY/XpwAAAAlmMUJFQjE3NDhAJiOOZ34FL0BEs+OJj9eo
+QArb9If8uSX//////////0Gq9cNBq3CkQLmZmiBARmZmAAAAAEAmIgSkYtmhQESvRRX7W5sA
+AAAJZjFCRUIxNzY2QCYiBKRi2aJARK9FFftbnEAAqs2eg+Qm//////////9BquFIQaszM0Cs
+zM0gQGAAAAAAAABAJlFy0xSd1UBEtmlzAa8WAAAACWYxQkVCMTE4MUAmUXLTFJ3UQES2aXMB
+rxRAA07ZFocrA///////////QaoUe0Goj1xApmZmIECmZmYAAAADREVCQCWCB19v0iBARNu5
+vW0lDQAAAAhmMkJFQjI1OEAlggdfb9IfQETbub1tJQ0/8t5prULDy///////////QanrhUGq
+ZmZAtmZmIECwAAAAAAAAQCVpYnDGyuRARNhtsN2C/AAAAAhmMkJFQjc3NUAlaWJwxsrjQETY
+bbDdgv0/9cPJ7sv7F///////////QanCj0GprhRAczMzIEAszM0AAAAAQCVlBzx7+ORARMY7
+e6dYJwAAAAlmMkJFQjMxMzdAJWUHPHv45kBExjt7p1gnP+mo1k1/DtX//////////0Gr1wpB
+rVwpQEzMzSBARmZmAAAAAEAlvgBF57JyQETauDhJw7EAAAAIZjJCRUI0NTBAJb4AReeyckBE
+2rg4ScOwP/+aAnUlRgz//////////0GouFJBo5maQMgAAGNAwzMzAAAAEk5lYXJieSBIIElJ
+IHJlZ2lvbkAlnO4dN9eUQETAAUY5QMIAAAAJZjJCRUIzNjkzQCWc7h0315VARMABRjlAwj/8
+PDYRNATr//////////9BrgAA/////0CQAAAgP8AAAAAAAABAJXb4N7SiM0BE1cpjTiR/AAAA
+CWYyQkVCMTE5N0Aldvg3tKIzQETVymNOJH8/6sFpwjt5VP//////////Qaaj10GnCj1AuZma
+IECzMzMAAAAAQCW2TLtS4C5ARNtmnlL1KAAAAAhmMkJFQjMzMEAltky7UuAvQETbZp5S9Sg/
+8hbwBo24vP//////////Qap64UGsKPZAYAAAIEBgAAAAAAAAQCWxHRTjvNRARMXq61QvuwAA
+AAlmMkJFQjMxNjNAJbEdFOO800BExerrVC+7P/KNT987ZFv//////////0GwzM1BqVwpQAAA
+ACA/2ZmaAAAAAEAlw5T1Nr/2QES//D/4bU0AAAAJZjJCRUIzNjk1QCXDlPU2v/ZARL/8P/ht
+TD/5yylenhsK//////////9BrmZmQa0KPUAZmZogP5mZmgAAAABAJY4Lver5T0BE2gFpLRn8
+AAAACGYyQkVCNTYzQCWOC73q+U9ARNoBaS0Z/EAIKIznA6+5//////////9BquFIQawUe0Cs
+zM0gQAZmZgAAAABAJY+5AK7DPUBE0naAeADxAAAACWYyQkVCMTY0OUAlj7kArsM9QETSdoB4
+API//Tw2ETQE6///////////QbFwpP////8/wAAAID+AAAAAAAADREVC
+</STREAM></BINARY></DATA>
+</TABLE>
+
+<INFO name="Warning" value="No center provided++++"/>
+</RESOURCE>
+</VOTABLE>

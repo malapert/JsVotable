@@ -30,8 +30,8 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
         AbstractNode.prototype.constructor.call(this, childNode);
         this.value;
         var element = childNode.childNodes[0];
-        if (element.nodeType == 3) {
-            this.value = element.textContent.trim();
+        if (element!= null && element.nodeType == 3) {
+            this.value = (element.textContent == null) ? null : element.textContent.trim();
         }
 
     };
