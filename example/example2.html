@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="../node_modules/requirejs/require.js"></script>
+    <script src="../JsVotable.min.js"></script>
+    <script type="text/javascript" src="main2.js"> </script>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<h1>Example 1 : Parsing VOTable</h1>
+
+URL of VOTable to parse: <input type="text" name="votable" size="100" id="votableUrl" value="http://vo.imcce.fr/webservices/skybot/proxy.php?file=http://145.238.217.38/tmp/webservices/skybot/1476124700338.xml&format=votable">
+
+<a class="button" href="#" >
+    <img src="http://findicons.com/files/icons/109/play_stop_pause/128/play1disabled.png" alt="sublit" height="20" width="20"/>Submit
+</a>
+<br/><br/>
+<div id="myWidget"></div>
+</body>
+</html>
