@@ -22,12 +22,14 @@
     "requirejs": "^2.3.2",
     "uglify-js": "^2.7.3",
     "xmlhttprequest": "^1.8.0",
-    "almond": "~0.3.3"
+    "brfs": "~1.4.3",
+    "jsdom-global": "~2.1.0",
+    "jsdom": "~9.6.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec",
+    "test": "./node_modules/.bin/mocha -r jsdom-global/register --reporter spec",
     "doc": "./node_modules/.bin/jsdoc -r app -t ./node_modules/ink-docstrap/template/ -d ./doc -R ./README.md",
-    "uglify": "./node_modules/.bin/uglifyjs --compress --mangle --output ./minify/jsvotable.min.js -- ./app/*.js"
+    "uglify": "./node_modules/.bin/r.js -o minify/minify.js"
   },
   "repository": {
     "type": "git",

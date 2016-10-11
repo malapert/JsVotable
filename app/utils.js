@@ -75,6 +75,22 @@ define(function () {
         return result;
     };
 
+    Utils.parseXML = function (val) {
+        if (document.implementation && document.implementation.createDocument) {
+            xmlDoc = new DOMParser().parseFromString(val, 'text/xml');
+        }
+        else if (window.ActiveXObject) {
+            xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+            xmlDoc.loadXML(val);
+        }
+        else
+        {
+            alert('Your browser cannot handle this script');
+            return null;
+        }
+        return xmlDoc;
+    };
+
 
     return Utils;
 });
