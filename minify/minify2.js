@@ -2,7 +2,7 @@
 	baseUrl: "../app",
 	name: "../node_modules/almond/almond",
 	include: ['votable'],
-	out: "../JsVotable.min.js",
+	out: "../votable.min.js",
 	wrap: {
 		start: "(function (root, factory) {\
 		    if (typeof define === 'function' && define.amd) {\
@@ -10,7 +10,7 @@
 		    } else {\
 			root.votable = factory(root.$);\
 		    }\
-		}(this, function ($, _) {",
+		}(this, function ($) {",
 		end: "return require('votable');}));"
 	},
 	optimize: "uglify",

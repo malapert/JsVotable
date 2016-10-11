@@ -9,6 +9,6 @@ $(function() {
     xhr.send(null);
 
     var response = xhr.responseXML;
-    var votable = new JsVotable(response);
+    var vot = new votable(response);
 
 });
