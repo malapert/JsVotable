@@ -37,8 +37,8 @@ npm install jsvotable
 
 Look to the examples :
 
- * [example1](https://rawgit.com/malapert/JsVotable/master/example/example1.html) 
- * [example2](https://rawgit.com/malapert/JsVotable/master/example/example2.html)
+ * [example1](https://github.com/malapert/JsVotable/blob/master/example/example1.html) 
+ * [example2](https://github.com/malapert/JsVotable/blob/master/example/example2.html)
 
 ## Running the tests
 
