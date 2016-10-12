@@ -53,7 +53,6 @@ define(["./utils","./abstractNode","./tabledata","./binary","./binary2","./fits"
      * Parses the Data node.
      * @param {NodeList} childNode the Data node
      * @returns {Object.<TableData|Binary|Binary2|Fits, Info[]>} the data
-     * @throws "Unknown element"     
      */
     var parseData = function(childNode) {
         var data;
@@ -74,7 +73,8 @@ define(["./utils","./abstractNode","./tabledata","./binary","./binary2","./fits"
                 } else if (nodeName == "INFO") {
                     infos.push(new Info(element));
                 } else {
-                    throw "Unknown element";
+                    console.warn("unknown element "+nodeName+" in Data node");
+
                 }
             }
         } return [data, infos];

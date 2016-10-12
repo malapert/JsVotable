@@ -1,6 +1,6 @@
 # JsVotable
 
-JsVotable a pure JavaScript library, that allows to parse the [VOTable](http://www.ivoa.net/documents/VOTable/20130920/) format.
+JsVotable a JavaScript library, that allows to parse the [VOTable](http://www.ivoa.net/documents/VOTable/20130920/) format.
 
 ## Getting Started
 
@@ -31,6 +31,12 @@ npm install https://github.com/malapert/JsVotable.git
 npm install jsvotable
 ```
 
+## How to use it
+
+Look to the examples :
+
+ * [example1](https://github.com/malapert/JsVotable/example/example1.html) 
+ * [example2](https://github.com/malapert/JsVotable/example/example2.html)
 
 ## Running the tests
 
@@ -64,24 +70,41 @@ npm install jsvotable --only=production
 
 ## Built With
 
-* requirejs ^2.3.2 for source code and tests
-* chai ^3.5.0 for tests
-* domparser ^0.1.1 for tests
-* mocha ^3.1.1 for tests
-* uglify-js ^2.7.3 for tests
-* xmlhttprequest ^1.8.0 for tests
+* requirejs ^2.3.2 for sourcing code and testing 
+* chai ^3.5.0 for testing
+* domparser ^0.1.1 for testing
+* mocha ^3.1.1 for testing
+* uglify-js ^2.7.3 for minifying
+* xmlhttprequest ^1.8.0 for testing
+* brfs ^1.4.3 for testing
+* jsdom-global ~2.1.0 for testing
+* jsdom ~9.6.0 for testing
 * jsdoc ^3.4.2 for documentation
 * ink-docstrap ^1.3.0 for documentation
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://github.com/malapert/JsVotable/CONTRIBUTING.md) for details on the process for submitting pull requests to me.
 
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/malapert/JsVotable/tags). 
 
-## Authors
+## Copyright & Credits
 
-* **Jean-Christophe Malapert <jcmalapert@gmail.com>**
+All names are listed in alphabetical order
+
+### Development
+
+#### Main Code
+
+Jean-Christophe Malapert
+
+#### Additional Codes
+
+Thomas Rolling (CDS / UTBM)
 
 ## License
 
-This project is licensed under the GPLV3 License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GPLV3 License - see the [LICENSE](https://github.com/malapert/JsVotable/LICENSE) file for details
 

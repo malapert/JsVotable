@@ -96,7 +96,7 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
      * @returns {?String} the ref value or null when no ref attribute.
      */
     Info.prototype.ref = function() {
-        return info["ref"];
+        return this.attributes["ref"];
     };
 
     /**

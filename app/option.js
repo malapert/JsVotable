@@ -46,7 +46,6 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
      * Parses the Option node.
      * @param childNode the option node.
      * @returns {Option[]} the list of options
-     * @throws "Unknown element"     
      */
     var parseOptionTag = function(childNode) {
         var options = [];
@@ -57,7 +56,7 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
                 if (nodeName == "OPTION") {
                     options.push(new Option(element));
                 }  else {
-                    throw "Unknown element";
+                    console.warn("unknown element "+nodeName+" in Option node");
                 }
             }
         }

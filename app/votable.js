@@ -61,11 +61,11 @@ define(["./utils","./abstractNode", "./definitions","./info","./resource", "./de
      * @augments AbstractNode
      * @constructor
      * @author Jean-Christophe Malapert
-     * @throws "xml cannot be null"
+     * @throws {Error} "xml cannot be null"
      */
     var Votable = function(xml) {
         if(xml == null) {
-            throw "xml cannot be null";
+            throw new Error("xml cannot be null");
         }
         var childNode = xml.documentElement;
         AbstractNode.prototype.constructor.call(this, childNode);
@@ -95,7 +95,6 @@ define(["./utils","./abstractNode", "./definitions","./info","./resource", "./de
      *
      * @param {NodeList} childNode The VOTable node
      * @returns {Object.<Definitions,Info[],Resource[],Description,Coosys[],Group[],Param[]>} The sequence which has been parsed
-     * @throws "Unknow element"
      */
     var parseVotableTag = function(childNode) {
         var root = childNode;
@@ -126,7 +125,7 @@ define(["./utils","./abstractNode", "./definitions","./info","./resource", "./de
                 } else if (nodeName == "PARAM") {
                     params.push(new Param(element));
                 } else {
-                    throw "Unknown element";
+                    console.warn("unknown element "+nodeName+" in Votable node");
                 }
             }
         }

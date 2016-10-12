@@ -62,7 +62,6 @@ define(["./utils","./abstractNode","./description","./fieldref","./paramref","./
      * Parses the GROUP node.
      * @param childNode the GROUP node
      * @returns {Object.<Description, Fieldref[], Paramref[], Param[], Group[]>} An array of description, fieldrefs, paramrefs, params, groups
-     * @throws "Unknown element"     
      */
     var parseGroup = function(childNode) {
         var description;
@@ -86,7 +85,7 @@ define(["./utils","./abstractNode","./description","./fieldref","./paramref","./
                 } else if (nodeName == "GROUP") {
                     groups.push(new Group(element));
                 } else {
-                    throw "Unknown element";
+                    console.warn("unknown element "+nodeName+" in Group node");
                 }
             }
         }

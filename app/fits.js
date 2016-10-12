@@ -45,7 +45,6 @@ define(["./utils","./abstractData","./stream"], function(Utils, AbstractData, St
      * Parses the Fits node.
      * @param childNode the Fits node
      * @returns {Stream} the stream
-     * @throws "Unknown element"     
      */
     var parseFits = function(childNode) {
         var stream;
@@ -56,7 +55,7 @@ define(["./utils","./abstractData","./stream"], function(Utils, AbstractData, St
                 if (nodeName == "STREAM") {
                     stream = new Definitions(element);
                 } else {
-                    throw "Unknown element";
+                    console.warn("unknown element "+nodeName+" in Fits node");
                 }
             }
         }

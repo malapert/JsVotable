@@ -68,7 +68,6 @@ define(["./utils", "./abstractNode", "./description", "./field", "./param", "./g
      * Parses the Table node.
      * @param {NodeList} childNodes the Table node
      * @returns {Object.<Field[],Param[],Group[],Link[],Data,Description,Info[]>} an array of fields, params, groups, links, data, description, infos
-     * @throws "Unknown element"
      */
     var parseTable = function(childNodes) {
         var fields = [];
@@ -97,7 +96,7 @@ define(["./utils", "./abstractNode", "./description", "./field", "./param", "./g
                 } else if (nodeName == "INFO") {
                     infos.push(new Info(element));
                 } else {
-                    throw "Unknown element";
+                    console.warn("unknown element "+nodeName+" in Table node");
                 }
             }
         }
@@ -218,6 +217,17 @@ define(["./utils", "./abstractNode", "./description", "./field", "./param", "./g
      */
     Table.prototype.getInfos = function() {
         return this.infos;
+    };
+
+    /**
+     * Returns the description.
+     *
+     * Description is one of the sequence element of the Table node.
+     *
+     * @returns {string} the description.
+     */
+    Table.prototype.getDescription = function() {
+        return this.description;
     };
 
     return Table;

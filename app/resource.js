@@ -60,6 +60,11 @@ define(["./utils","./abstractNode","./description","./info","./table","./link","
      *      <!-- Suggested Doug Tody, to include new RESOURCE attributes -->
      *      <xs:anyAttribute namespace="##other" processContents="lax"/>
      *  </xs:complexType>
+     *  
+     *  @example <caption>Get a table</caption>
+     *  var listResourcesOrTable = resource.getResourcesOrTables();
+     *  var resourceOrTable = listResourcesOrTable[0];
+     *  var table = resourceOrTable["TABLE"];
      *
      * @param {NodeList} childNode The Resource node
      * @exports Resource
@@ -117,11 +122,12 @@ define(["./utils","./abstractNode","./description","./info","./table","./link","
         for(var i = end; childNode!=null && i< childNode.childNodes.length; i++) {
             var element = childNode.childNodes[i];
             if (element.nodeType == 1) {
+                var nodeName = element.localName;
                 if (nodeName == "LINK") {
                     if (seqElts.hasOwnProperty("TABLE") || seqElts.hasOwnProperty("RESOURCE")) {
                         seqElts["LINKS"] = seqLinks;
                         seqElts["INFOS"] = seqInfos;
-                        this.abstractSequences.push(seqElts);
+                        abstractSequences.push(seqElts);
                         seqElts = {};
                         seqLinks = [];
                         seqInfos = [];

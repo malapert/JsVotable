@@ -13,7 +13,11 @@ describe("VOTable parser", function () {
     var votable;
     describe("Parsing votable", function () {
 
-        it("it loads a VOTable", function () {
+        it("it cannot load a VOTable ", function () {
+            assert.throws(function() { new JsVotable.Votable(null)}, Error, "xml cannot be null");
+        });
+
+        it("it loads a VOTable from http", function () {
             XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
             DOMParser = require('domparser').DOMParser;
             var xhr = new XMLHttpRequest();

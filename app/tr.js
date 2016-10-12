@@ -49,7 +49,6 @@ define(["./utils","./abstractNode","./td"], function(Utils, AbstractNode, Td) {
      * Parses the Tr node.
      * @param {NodeList} childNode the Tr node
      * @returns {!Td[]} an array of Td
-     * @throws "Unknown element"
      */
     var parseTr = function(childNode) {
         var tds = [];
@@ -60,7 +59,7 @@ define(["./utils","./abstractNode","./td"], function(Utils, AbstractNode, Td) {
                 if (nodeName == "TD") {
                     tds.push(new Td(element));
                 }  else {
-                    throw "Unknown element";
+                    console.warn("unknown element "+nodeName+" in Tr node");
                 }
             }
         }

@@ -47,7 +47,6 @@ define(["./utils","./abstractNode","./group","./param","./coosys"], function (Ut
      * Parses the DEFINITIONS node
      * @param {NodeList} childNode the DEFINITIONS node
      * @returns {Object.<Coosys[],Param[]>} Returns coosyss, params
-     * @throws "Unknown element"
      */
     var parseDefinitions = function(childNode) {
         var coosyss = [];
@@ -62,7 +61,8 @@ define(["./utils","./abstractNode","./group","./param","./coosys"], function (Ut
                 } else if (nodeName == "PARAM") {
                     params.push(new Param(element));
                 } else {
-                    throw "Unknown element";
+                    console.warn("unknown element "+nodeName+" in Definitions node");
+
                 }
             }
         }

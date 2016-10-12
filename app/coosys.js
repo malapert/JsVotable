@@ -67,7 +67,6 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
      * Parses the CoordinateSystem node.
      * @param {NodeList} childNode the CoordinateSystem node
      * @returns {String} the content of CoordinateSysem node
-     * @throws "Unknown element"      
      */
     var parseCoordinateSystem = function(childNode) {
         var value;
@@ -76,7 +75,7 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
             if (element!=null && element.nodeType == 3) {
                 value = (element.textContent == null) ? null : element.textContent.trim();
             } else {
-                throw "Unknown element";
+                console.warn("unknown element "+element+" in Coosys node");
             }
         }
         return value;

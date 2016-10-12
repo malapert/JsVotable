@@ -25,7 +25,7 @@ define(function() {
      * Creates a base64 constructor based on the description of the different data types.
      * This description is needed to decode the information encoding in base64
      *
-     * A part of the methods comes from https://github.com/aschaaff/votable.js/blob/master/votable.js
+     * A part of the methods comes from {@link http://github.com/aschaaff/votable.js}
      *
      * @param fields the description of the data types based on {@link Field}
      * @exports Base64
@@ -188,6 +188,8 @@ define(function() {
      * @param {Array} TabBits Binary array
      * @return {int} int (16 bit)
      * @author Thomas Rolling (CDS / UTBM)
+     * @licence GPL-V3
+     * @see {@link http://github.com/aschaaff/votable.js} for further information
      ***/
 
     function bin2short16(TabBits) {
@@ -212,6 +214,8 @@ define(function() {
      * @param {array} TabBits Binary array
      * @return {int} int (32 bit)
      * @author Thomas Rolling (CDS / UTBM)
+     * @licence GPL-V3
+     * @see {@link http://github.com/aschaaff/votable.js} for further information
      ***/
 
     function bin2int32(TabBits) {
@@ -236,6 +240,8 @@ define(function() {
      * @param {Array} TabBits Binary array
      * @return {float} float (32 bit)
      * @author Thomas Rolling (CDS / UTBM)
+     * @licence GPL-V3
+     * @see {@link http://github.com/aschaaff/votable.js} for further information
      ***/
 
     function bin2float32(TabBits) {
@@ -260,6 +266,8 @@ define(function() {
      * @param {Array} TabBits binary array
      * @return {float} (64 bit)
      * @author Thomas Rolling (CDS / UTBM)
+     * @licence GPL-V3
+     * @see {@link http://github.com/aschaaff/votable.js} for further information
      ***/
 
     function bin2double64(TabBits) {
@@ -289,6 +297,8 @@ define(function() {
      * @param {Array} TabBits Binary array
      * @return {int} int (8 bit)
      * @author Thomas Rolling (CDS / UTBM)
+     * @licence GPL-V3
+     * @see {@link http://github.com/aschaaff/votable.js} for further information
      ***/
 
     function bin2ubyte8(TabBits) {
@@ -313,6 +323,8 @@ define(function() {
      * @param {Array} TabBits binary array
      * @return {string} string (min : 1 char)
      * @author Thomas Rolling (CDS / UTBM)
+     * @licence GPL-V3
+     * @see {@link http://github.com/aschaaff/votable.js} for further information
      ***/
 
     function bin2string(TabBits) {
@@ -344,6 +356,8 @@ define(function() {
      * @param {Array} TabBits a binary array
      * @return {int} 32 bit value
      * @author Thomas Rolling (CDS / UTBM)
+     * @licence GPL-V3
+     * @see {@link http://github.com/aschaaff/votable.js} for further information
      ***/
 
     function bin2uint32(TabBits) {
@@ -368,6 +382,8 @@ define(function() {
      * @param {int} character ASCII code
      * @return {byte} base 64 value
      * @author Thomas Rolling (CDS / UTBM)
+     * @licence GPL-V3
+     * @see {@link http://github.com/aschaaff/votable.js} for further information
      ***/
 
     function b64ToUint6(caractere) {

@@ -8,7 +8,7 @@ var fs = require('fs');
 var JsVotable = requirejs("../../app/JsVotable");
 var Base64 = requirejs("../../app/base64");
 
-describe("Checking attributes and tags", function () {
+describe("Checking attributes and nodes value", function () {
 
     var txt = fs.readFileSync(__dirname + '/sampleVotable.xml', 'utf8');
     DOMParser = require('domparser').DOMParser;
@@ -27,7 +27,7 @@ describe("Checking attributes and tags", function () {
         });
 
         it("it checks description", function () {
-            assert.equal(votableTest.getDescription().getContent(),"My descritpion ");
+            assert.equal(votableTest.getDescription().getContent(),"My descritpion");
         });        
         
     });
@@ -52,8 +52,8 @@ describe("Checking attributes and tags", function () {
         });
     });
     var resource1 = votableTest.getResources()[0];
-    console.log(resource1);
     var resource2 = votableTest.getResources()[1];
+
     describe("for Resource 1", function () {
         it("it checks name", function () {
             assert.equal(resource1.name(),"nameResource");
@@ -72,7 +72,7 @@ describe("Checking attributes and tags", function () {
         });
 
         it("it checks description", function () {
-            assert.equal(resource1.getDescription().getContent(),"My second description ");
+            assert.equal(resource1.getDescription().getContent(),"My second description");
         });
     });
 
@@ -202,8 +202,8 @@ describe("Checking attributes and tags", function () {
             assert.equal(info3.utype(),"utype3");
         });
 
-    });    
-    console.log(resource1);
+    });
+
     var rortable = resource1.getResourcesOrTables()[0];
     var table = rortable["TABLE"];
 
@@ -224,12 +224,8 @@ describe("Checking attributes and tags", function () {
             assert.equal(table.ucd(),"ucd7");
         });
 
-        it("it checks xtype", function () {
-            assert.equal(table.xtype(),"xtype3");
-        });
-
         it("it checks utype", function () {
-            assert.equal(table.utype(),"xtyp7");
+            assert.equal(table.utype(),"utyp7");
         });
 
         it("it checks nrows", function () {
@@ -294,8 +290,8 @@ describe("Checking attributes and tags", function () {
 
         it("it checks description", function () {
             assert.equal(field.getDescription().getContent(),"desc1");
-        }); 
-        
+        });
+
     });
     var values = field.getValues();
     describe("for values", function () {
@@ -322,11 +318,11 @@ describe("Checking attributes and tags", function () {
     describe("for option", function () {
 
         it("it checks name", function () {
-            assert.equal(option.name(),"10");
+            assert.equal(option.name(),"toto");
         });
 
         it("it checks value", function () {
-            assert.equal(option.value(),"20");
+            assert.equal(option.value(),"trtr");
         });
 
     });

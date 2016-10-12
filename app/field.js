@@ -73,7 +73,6 @@ define(["./utils","./abstractNode","./description","./values","./link"],
      * Parses the FIELD node.
      * @param {NodeList} childNode the FIELD node
      * @returns {Object.<Description,Values,Link[]>} an array of description, values, link
-     * @throws "Unknown element"     
      */
     var parseField = function(childNode) {
         var description;
@@ -90,7 +89,7 @@ define(["./utils","./abstractNode","./description","./values","./link"],
                 } else if (nodeName == "LINK") {
                     links.push(new Link(element));
                 } else {
-                    throw "Unknown element";
+                    console.warn("unknown element "+nodeName+" in Field node");
                 }
             }
         }

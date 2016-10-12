@@ -49,6 +49,15 @@ define( ["./votable","./binary","./binary2","./coosys","./data","./definitions",
     JsVotable.Td = Td;
     JsVotable.Tr = Tr;
     JsVotable.Values = Values;
+    JsVotable.version = {
+        major : 1,
+        minor : 0,
+        patch : 0,
+        date : "2016-10-12",
+        toString : function () {
+            return this.major+ "." + this.minor + "." + this.patch;
+        }
+    };
 
     window.JsVotable = JsVotable;
 

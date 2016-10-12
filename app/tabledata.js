@@ -49,7 +49,6 @@ define(["./utils","./tr","./abstractData"], function(Utils, Tr, AbstractData) {
      * Parses the TableData node.
      * @param {NodeList} childNode the TableData node
      * @returns {Tr[]} A list of Tr object
-     * @throws "Unknown element"
      */
     var parseTableData = function(childNode) {
         var trs = [];
@@ -60,7 +59,7 @@ define(["./utils","./tr","./abstractData"], function(Utils, Tr, AbstractData) {
                 if (nodeName == "TR") {
                     trs.push(new Tr(element));
                 }  else {
-                    throw "Unknown element";
+                    console.warn("unknown element "+nodeName+" in TableData node");
                 }
             }
         }

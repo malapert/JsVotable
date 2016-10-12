@@ -45,7 +45,6 @@ define(["./utils","./stream","./abstractData"], function(Utils, Stream, Abstract
      * Parses the Binary2 node.
      * @param {NodeList} childNode the Binary node
      * @returns {!String} the Stream
-     * @throws "Unknown element"     
      */
     var parseBinary2 = function(childNode) {
         var stream;
@@ -56,7 +55,7 @@ define(["./utils","./stream","./abstractData"], function(Utils, Stream, Abstract
                 if (nodeName == "STREAM") {
                     stream = new Definitions(element);
                 } else {
-                    throw "Unknown element";
+                    console.warn("unknown element "+nodeName+" in Binary2 node");
                 }
             }
         }

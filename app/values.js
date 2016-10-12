@@ -64,7 +64,6 @@ define(["./utils","./abstractNode","./min","./max","./option"], function(Utils, 
      *
      * @param {NodeList} childNode the VALUES node
      * @returns {Object.<Min,Max,Option[]>} the values
-     * @throws "Unknown element"
      */
     var parseValuesTag = function(childNode) {
         var min;
@@ -81,7 +80,7 @@ define(["./utils","./abstractNode","./min","./max","./option"], function(Utils, 
                 } else if (nodeName == "OPTION") {
                     options.push(new Option(element));
                 }  else {
-                    throw "Unknown element";
+                    console.warn("unknown element "+nodeName+" in Values node");
                 }
             }
         }
