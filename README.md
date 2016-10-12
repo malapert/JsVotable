@@ -1,5 +1,7 @@
 # JsVotable
 
+[![Npm Downloads](https://nodei.co/npm/jsvotable.png?downloads=true&stars=true)](https://nodei.co/npm/jsvotable.png?downloads=true&stars=true)
+
 JsVotable a JavaScript library, that allows to parse the [VOTable](http://www.ivoa.net/documents/VOTable/20130920/) format.
 
 ## Getting Started
