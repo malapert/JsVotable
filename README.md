@@ -35,8 +35,8 @@ npm install jsvotable
 
 Look to the examples :
 
- * [example1](https://github.com/malapert/JsVotable/example/example1.html) 
- * [example2](https://github.com/malapert/JsVotable/example/example2.html)
+ * [example1](https://github.com/malapert/JsVotable/blob/master/example/example1.html) 
+ * [example2](https://github.com/malapert/JsVotable/blob/master/example/example2.html)
 
 ## Running the tests
 
@@ -84,7 +84,7 @@ npm install jsvotable --only=production
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/malapert/JsVotable/CONTRIBUTING.md) for details on the process for submitting pull requests to me.
+Please read [CONTRIBUTING.md](https://github.com/malapert/JsVotable/blob/master/CONTRIBUTING.md) for details on the process for submitting pull requests to me.
 
 ## Versioning
 
@@ -106,5 +106,5 @@ Thomas Rolling (CDS / UTBM)
 
 ## License
 
-This project is licensed under the GPLV3 License - see the [LICENSE](https://github.com/malapert/JsVotable/LICENSE) file for details
+This project is licensed under the GPLV3 License - see the [LICENSE](https://github.com/malapert/JsVotable/blob/master/LICENSE) file for details
 
