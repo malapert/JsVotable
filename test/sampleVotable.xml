@@ -5,55 +5,49 @@
     Created on : October 11, 2016, 4:49 PM
     Author     : malapert
     Description:
-        Purpose of the document follows.
+        Testing.
 -->
 
 <ns0:VOTABLE  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
               xmlns:ns0='http://www.ivoa.net/xml/VOTable/v1.3'
-              xsi:schemaLocation='http://www.ivoa.net/xml/VOTable/v1.3 votable.xsd' ID="" version="">
-    <ns0:DESCRIPTION>
-    </ns0:DESCRIPTION>
+              xsi:schemaLocation='http://www.ivoa.net/xml/VOTable/v1.3 votable.xsd' ID="myIDVotable" version="1.0">
+    <ns0:DESCRIPTION>My descritpion </ns0:DESCRIPTION>
     <ns0:DEFINITIONS>
-        <ns0:COOSYS ID="" equinox="" epoch="" system="eq_FK5"></ns0:COOSYS>
+        <ns0:COOSYS ID="coosysID" equinox="2000" epoch="2000.0" system="eq_FK5"></ns0:COOSYS>
     </ns0:DEFINITIONS>
-    <ns0:RESOURCE name="" ID="" utype="" type="results" anyAttribute= " ">
-        <ns0:DESCRIPTION>
-        </ns0:DESCRIPTION>
-        <ns0:INFO ID="" name="" value="" unit="" xtype="" ref="" ucd="" utype=""></ns0:INFO>
-        <ns0:INFO ID="" name="" value="" unit="" xtype="" ref="" ucd="" utype=""></ns0:INFO>
-        <ns0:INFO ID="" name="" value="" unit="" xtype="" ref="" ucd="" utype=""></ns0:INFO>
-        <ns0:LINK ID="" content-role="" content-type="" title="" value="" href="" gref="" action=""></ns0:LINK>
-        <ns0:LINK ID="" content-role="" content-type="" title="" value="" href="" gref="" action=""></ns0:LINK>
-        <ns0:LINK ID="" content-role="" content-type="" title="" value="" href="" gref="" action=""></ns0:LINK>
-        <ns0:TABLE ID="" name="" ref="" ucd="" utype="" nrows="">
-            <ns0:DESCRIPTION>
-            </ns0:DESCRIPTION>
-            <ns0:FIELD ID="" unit="" datatype="" precision="" width="" xtype="" ref="" name="" ucd="" utype="" arraysize="" type="">
-                <ns0:DESCRIPTION>
-                </ns0:DESCRIPTION>
-                <ns0:VALUES ID="" type="legal" null="" ref="">
-                    <ns0:MIN value="" inclusive="yes"></ns0:MIN>
-                    <ns0:MAX value="" inclusive="yes"></ns0:MAX>
-                    <ns0:OPTION name="" value="">
+    <ns0:RESOURCE name="nameResource" ID="IDResource" utype="fakeUtype" type="results" anyAttribute= " ">
+        <ns0:DESCRIPTION>My second description </ns0:DESCRIPTION>
+        <ns0:INFO ID="ID1" name="name1" value="value1" unit="unit1" xtype="xtype1" ref="ref1" ucd="ucd1" utype="utype1"></ns0:INFO>
+        <ns0:INFO ID="ID2" name="name2" value="value2" unit="unit2" xtype="xtype2" ref="ref2" ucd="ucd2" utype="utype2"></ns0:INFO>
+        <ns0:INFO ID="ID3" name="name3" value="value3" unit="unit3" xtype="xtype3" ref="ref3" ucd="ucd3" utype="utype3"></ns0:INFO>
+        <ns0:LINK ID="ID4" content-role="role1" content-type="content1" title="title1" value="value1" href="href1" gref="gref1" action="action1"></ns0:LINK>
+        <ns0:LINK ID="ID5" content-role="role2" content-type="content3" title="tite2" value="value2" href="href2" gref="gref2" action="action2"></ns0:LINK>
+        <ns0:LINK ID="ID6" content-role="role3" content-type="content3" title="title3" value="value3" href="href3" gref="gref3" action="action3"></ns0:LINK>
+        <ns0:TABLE ID="ID7" name="name7" ref="ref7" ucd="ucd7" utype="utyp7" nrows="5">
+            <ns0:DESCRIPTION>my description</ns0:DESCRIPTION>
+            <ns0:FIELD ID="f1" unit="u1" datatype="d1" precision="p1" width="10" xtype="x1" ref="ref1" name="name1" ucd="ucd1" utype="utype1" arraysize="*" type="type1">
+                <ns0:DESCRIPTION>desc1</ns0:DESCRIPTION>
+                <ns0:VALUES ID="val1" type="legal" null="4" ref="4">
+                    <ns0:MIN value="10" inclusive="yes"></ns0:MIN>
+                    <ns0:MAX value="20" inclusive="yes"></ns0:MAX>
+                    <ns0:OPTION name="toto" value="trtr">
                     </ns0:OPTION>
-                    <ns0:OPTION name="" value="">
+                    <ns0:OPTION name="tutu" value="trtr">
                     </ns0:OPTION>
-                    <ns0:OPTION name="" value="">
+                    <ns0:OPTION name="titi" value="trtr">
                     </ns0:OPTION>
                 </ns0:VALUES>
             </ns0:FIELD>
             <ns0:DATA>
                 <ns0:TABLEDATA>
-                    <ns0:TR ID="">
-                        <ns0:TD encoding=""></ns0:TD>
-                        <ns0:TD encoding=""></ns0:TD>
-                        <ns0:TD encoding=""></ns0:TD>
+                    <ns0:TR ID="tr1">
+                        <ns0:TD encoding="utf8">val1</ns0:TD>                     
                     </ns0:TR>
-                    <ns0:TR ID="">
-                        <ns0:TD encoding=""></ns0:TD>
+                    <ns0:TR ID="tr2">
+                        <ns0:TD encoding="utf8">val2</ns0:TD>
                     </ns0:TR>
-                    <ns0:TR ID="">
-                        <ns0:TD encoding=""></ns0:TD>
+                    <ns0:TR ID="tr3">
+                        <ns0:TD encoding="utf8">val3</ns0:TD>
                     </ns0:TR>
                 </ns0:TABLEDATA>
             </ns0:DATA>
@@ -80,119 +74,15 @@
         </ns0:TABLE>
     </ns0:RESOURCE>
     <ns0:RESOURCE name="" ID="" utype="" type="results" anyAttribute= " ">
-        <ns0:DESCRIPTION>
-        </ns0:DESCRIPTION>
-        <ns0:TABLE ID="" name="" ref="" ucd="" utype="" nrows="">
-            <ns0:DESCRIPTION>
-            </ns0:DESCRIPTION>
-            <ns0:FIELD ID="" unit="" datatype="" precision="" width="" xtype="" ref="" name="" ucd="" utype="" arraysize="" type="">
+        <ns0:DESCRIPTION>again</ns0:DESCRIPTION>
+        <ns0:TABLE ID="t4" name="name4" ref="ref4" ucd="ucd4" utype="utype4" nrows="1">
+            <ns0:DESCRIPTION>again again</ns0:DESCRIPTION>
+            <ns0:FIELD ID="f5" unit="u5" datatype="d5" precision="p5" width="20" xtype="6" ref="fefe" name="nnnn" ucd="eeee" utype="ffff" arraysize="*" type="gggg">
                 <ns0:DESCRIPTION>
                 </ns0:DESCRIPTION>
-                <ns0:VALUES ID="" type="legal" null="" ref="">
-                    <ns0:MIN value="" inclusive="yes"></ns0:MIN>
-                    <ns0:MAX value="" inclusive="yes"></ns0:MAX>
-                </ns0:VALUES>
-            </ns0:FIELD>
-            <ns0:DATA>
-                <ns0:TABLEDATA>
-                </ns0:TABLEDATA>
-            </ns0:DATA>
-        </ns0:TABLE>
-    </ns0:RESOURCE>
-
-</ns0:VOTABLE><?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-    Document   : votable.xml
-    Created on : October 11, 2016, 4:49 PM
-    Author     : malapert
-    Description:
-        Purpose of the document follows.
--->
-
-<ns0:VOTABLE  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-              xmlns:ns0='http://www.ivoa.net/xml/VOTable/v1.3'
-              xsi:schemaLocation='http://www.ivoa.net/xml/VOTable/v1.3 votable.xsd' ID="" version="">
-    <ns0:DESCRIPTION>
-    </ns0:DESCRIPTION>
-    <ns0:DEFINITIONS>
-        <ns0:COOSYS ID="" equinox="" epoch="" system="eq_FK5"></ns0:COOSYS>
-    </ns0:DEFINITIONS>
-    <ns0:RESOURCE name="" ID="" utype="" type="results" anyAttribute= " ">
-        <ns0:DESCRIPTION>
-        </ns0:DESCRIPTION>
-        <ns0:INFO ID="" name="" value="" unit="" xtype="" ref="" ucd="" utype=""></ns0:INFO>
-        <ns0:INFO ID="" name="" value="" unit="" xtype="" ref="" ucd="" utype=""></ns0:INFO>
-        <ns0:INFO ID="" name="" value="" unit="" xtype="" ref="" ucd="" utype=""></ns0:INFO>
-        <ns0:LINK ID="" content-role="" content-type="" title="" value="" href="" gref="" action=""></ns0:LINK>
-        <ns0:LINK ID="" content-role="" content-type="" title="" value="" href="" gref="" action=""></ns0:LINK>
-        <ns0:LINK ID="" content-role="" content-type="" title="" value="" href="" gref="" action=""></ns0:LINK>
-        <ns0:TABLE ID="" name="" ref="" ucd="" utype="" nrows="">
-            <ns0:DESCRIPTION>
-            </ns0:DESCRIPTION>
-            <ns0:FIELD ID="" unit="" datatype="" precision="" width="" xtype="" ref="" name="" ucd="" utype="" arraysize="" type="">
-                <ns0:DESCRIPTION>
-                </ns0:DESCRIPTION>
-                <ns0:VALUES ID="" type="legal" null="" ref="">
-                    <ns0:MIN value="" inclusive="yes"></ns0:MIN>
-                    <ns0:MAX value="" inclusive="yes"></ns0:MAX>
-                    <ns0:OPTION name="" value="">
-                    </ns0:OPTION>
-                    <ns0:OPTION name="" value="">
-                    </ns0:OPTION>
-                    <ns0:OPTION name="" value="">
-                    </ns0:OPTION>
-                </ns0:VALUES>
-            </ns0:FIELD>
-            <ns0:DATA>
-                <ns0:TABLEDATA>
-                    <ns0:TR ID="">
-                        <ns0:TD encoding=""></ns0:TD>
-                        <ns0:TD encoding=""></ns0:TD>
-                        <ns0:TD encoding=""></ns0:TD>
-                    </ns0:TR>
-                    <ns0:TR ID="">
-                        <ns0:TD encoding=""></ns0:TD>
-                    </ns0:TR>
-                    <ns0:TR ID="">
-                        <ns0:TD encoding=""></ns0:TD>
-                    </ns0:TR>
-                </ns0:TABLEDATA>
-            </ns0:DATA>
-        </ns0:TABLE>
-    </ns0:RESOURCE>
-    <ns0:RESOURCE name="" ID="" utype="" type="results" anyAttribute= " ">
-        <ns0:DESCRIPTION>
-        </ns0:DESCRIPTION>
-        <ns0:TABLE ID="" name="" ref="" ucd="" utype="" nrows="">
-            <ns0:DESCRIPTION>
-            </ns0:DESCRIPTION>
-            <ns0:FIELD ID="" unit="" datatype="" precision="" width="" xtype="" ref="" name="" ucd="" utype="" arraysize="" type="">
-                <ns0:DESCRIPTION>
-                </ns0:DESCRIPTION>
-                <ns0:VALUES ID="" type="legal" null="" ref="">
-                    <ns0:MIN value="" inclusive="yes"></ns0:MIN>
-                    <ns0:MAX value="" inclusive="yes"></ns0:MAX>
-                </ns0:VALUES>
-            </ns0:FIELD>
-            <ns0:DATA>
-                <ns0:TABLEDATA>
-                </ns0:TABLEDATA>
-            </ns0:DATA>
-        </ns0:TABLE>
-    </ns0:RESOURCE>
-    <ns0:RESOURCE name="" ID="" utype="" type="results" anyAttribute= " ">
-        <ns0:DESCRIPTION>
-        </ns0:DESCRIPTION>
-        <ns0:TABLE ID="" name="" ref="" ucd="" utype="" nrows="">
-            <ns0:DESCRIPTION>
-            </ns0:DESCRIPTION>
-            <ns0:FIELD ID="" unit="" datatype="" precision="" width="" xtype="" ref="" name="" ucd="" utype="" arraysize="" type="">
-                <ns0:DESCRIPTION>
-                </ns0:DESCRIPTION>
-                <ns0:VALUES ID="" type="legal" null="" ref="">
-                    <ns0:MIN value="" inclusive="yes"></ns0:MIN>
-                    <ns0:MAX value="" inclusive="yes"></ns0:MAX>
+                <ns0:VALUES ID="vv" type="legal" null="v1" ref="v1">
+                    <ns0:MIN value="v1" inclusive="yes"></ns0:MIN>
+                    <ns0:MAX value="v2" inclusive="yes"></ns0:MAX>
                 </ns0:VALUES>
             </ns0:FIELD>
             <ns0:DATA>
@@ -203,3 +93,4 @@
     </ns0:RESOURCE>
 
 </ns0:VOTABLE>
+

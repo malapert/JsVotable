@@ -54,7 +54,7 @@ define(["./utils","./stream","./abstractData"], function(Utils, Stream, Abstract
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
                 if (nodeName == "STREAM") {
-                    stream = new Definitions(element);
+                    stream = new Stream(element);
                 } else {
                     throw "Unknown element";
                 }

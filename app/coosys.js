@@ -73,8 +73,8 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
         var value;
         for(var i = 0; childNode!=null && i< childNode.childNodes.length; i++){
             var element = childNode.childNodes[i];
-            if (element.nodeType == 3) {
-                value = element.textContent.trim();
+            if (element!=null && element.nodeType == 3) {
+                value = (element.textContent == null) ? null : element.textContent.trim();
             } else {
                 throw "Unknown element";
             }

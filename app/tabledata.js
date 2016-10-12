@@ -30,14 +30,19 @@ define(["./utils","./tr","./abstractData"], function(Utils, Tr, AbstractData) {
      *  </xs:complexType>
      *
      * @param {NodeList} childNode the TableData node
+     * @param {Array} the trs provided by {@link Base64#decode} while parsing a base64 stream
      * @exports TableData
      * @augments AbstractData
      * @constructor
      * @author Jean-Christophe Malapert
      */
-    var TableData = function(childNode) {
+    var TableData = function(childNode, options) {
         AbstractData.prototype.constructor.call(this, childNode, "TableData");
-        this.trs = parseTableData(childNode);
+        if (options == null) {
+            this.trs = parseTableData(childNode);
+        } else {
+            this.trs = options;
+        }
     };
 
     /**

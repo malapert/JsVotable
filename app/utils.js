@@ -91,6 +91,5 @@ define(function () {
         return xmlDoc;
     };
 
-
     return Utils;
 });

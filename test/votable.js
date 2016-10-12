@@ -6,15 +6,17 @@ requirejs.config({
 var assert = require('chai').assert;
 var fs = require('fs');
 var JsVotable = requirejs("../../app/JsVotable");
+var Base64 = requirejs("../../app/base64");
 
 describe("VOTable parser", function () {
+
     var votable;
     describe("Parsing votable", function () {
 
         it("it loads a VOTable", function () {
             XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
             DOMParser = require('domparser').DOMParser;
-            xhr = new XMLHttpRequest();
+            var xhr = new XMLHttpRequest();
             xhr.open('GET', "http://axel.u-strasbg.fr/HiPSCatService/I/284/out/metadata.xml", false);
             xhr.send(null);
             var txt = xhr.responseText;
@@ -54,7 +56,39 @@ describe("VOTable parser", function () {
         });
 
         it("it parses a generated VOTable from xsd", function () {
+            var txt = fs.readFileSync(__dirname + '/sampleVotable.xml', 'utf8');
+            var parser = new DOMParser();
+            var xml = parser.parseFromString(txt, "application/xml");
+            var votableTest = new JsVotable.Votable(xml);
+            assert.ok(true);
+        });
+
+        it("it parses a VOTable from IMCCE", function () {
             var txt = fs.readFileSync(__dirname + '/imcce.vot', 'utf8');
+            var parser = new DOMParser();
+            var xml = parser.parseFromString(txt, "application/xml");
+            var votableTest = new JsVotable.Votable(xml);
+            assert.ok(true);
+        });
+
+        it("it parses a VOTable from VOparis", function () {
+            var txt = fs.readFileSync(__dirname + '/sia-voparis.vot', 'utf8');
+            var parser = new DOMParser();
+            var xml = parser.parseFromString(txt, "application/xml");
+            var votableTest = new JsVotable.Votable(xml);
+            assert.ok(true);
+        });
+
+        it("it parses a VOTable bin-64 from CDS", function () {
+            var txt = fs.readFileSync(__dirname + '/vizier_votable.b64', 'utf8');
+            var parser = new DOMParser();
+            var xml = parser.parseFromString(txt, "application/xml");
+            var votableTest = new JsVotable.Votable(xml);
+            assert.ok(true);
+        });
+
+        it("it parses a VOTable from CDS", function () {
+            var txt = fs.readFileSync(__dirname + '/vizier_votable.vot', 'utf8');
             var parser = new DOMParser();
             var xml = parser.parseFromString(txt, "application/xml");
             var votableTest = new JsVotable.Votable(xml);
@@ -89,6 +123,26 @@ describe("VOTable parser", function () {
 
 
     });
+
+    describe("Decoding base 64", function () {
+
+        it("it decodes base 64", function () {
+            var txt = fs.readFileSync(__dirname + '/vizier_votable.b64', 'utf8');
+            var parser = new DOMParser();
+            var xml = parser.parseFromString(txt, "application/xml");
+            var votableTest = new JsVotable.Votable(xml);
+            var table = votableTest.getVotableEltByID("J_MNRAS_362_1006_tables");
+            var fields = table.getFields();
+            var data = table.getData();
+            var binary = data.getData();
+            var stream = binary.getStream();
+            assert.equal(stream.encoding(),"base64");
+            var content = stream.getContent(true, fields);
+            
+            //assert.equal(encoding,"base64");
+        });
+
+    });    
 
 });
 

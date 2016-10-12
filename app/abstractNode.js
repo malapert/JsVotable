@@ -56,12 +56,20 @@ define(["./utils", "./cache"], function(Utils, Cache) {
     };
 
     /**
-     * Checks if the tag has the "name" attribute
+     * Checks if the tag has the "name" as attribute
      * @param name the attribute name to test
-     * @returns {boolean} rrue when the attribute is defined otherwose false
+     * @returns {boolean} true when the attribute is defined otherwose false
      */
     AbstractNode.prototype.hasAttribute = function(name) {
         return this.attributes.hasOwnProperty(name);
+    };
+
+    /**
+     * Checks if the tag has attributes
+     * @returns {boolean} true when the tag has at least one attribute otherwise false.
+     */
+    AbstractNode.prototype.hasAttributes = function() {
+        return (Object.keys(this.attributes).length == 0) ? false : true;
     };
 
     /**

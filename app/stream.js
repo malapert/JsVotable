@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with JVotable.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
+define(["./utils", "./abstractNode","./base64","./tabledata"], function (Utils, AbstractNode, Base64, TableData) {
 
     /**
      * Constructs the Stream object.
@@ -60,18 +60,18 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
      * @constructor
      * @author Jean-Christophe Malapert
      */
-    var Stream = function(childNode) {
+    var Stream = function (childNode) {
         AbstractNode.prototype.constructor.call(this, childNode);
-        this.value = childNode.wholeText;
+        this.value = childNode.textContent;
     };
 
-    Utils.inherits(AbstractNode , Stream );
+    Utils.inherits(AbstractNode, Stream);
 
     /**
      * Returns the type value.
      * @returns {?String} the type value or null when no type attribute.
      */
-    Stream.prototype.type = function() {
+    Stream.prototype.type = function () {
         return this.attributes["type"];
     };
 
@@ -79,7 +79,7 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
      * Returns the href value.
      * @returns {?String} the href value or null when no href attribute.
      */
-    Stream.prototype.href = function() {
+    Stream.prototype.href = function () {
         return this.attributes["href"];
     };
 
@@ -87,7 +87,7 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
      * Returns the actuate value.
      * @returns {?String} the actuate value or null when no actuate attribute.
      */
-    Stream.prototype.actuate = function() {
+    Stream.prototype.actuate = function () {
         return this.attributes["actuate"];
     };
 
@@ -95,7 +95,7 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
      * Returns the encoding value.
      * @returns {!String} the encoding value or null when no encoding attribute.
      */
-    Stream.prototype.href = function() {
+    Stream.prototype.encoding = function () {
         return this.attributes["encoding"];
     };
 
@@ -103,7 +103,7 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
      * Returns the expires value.
      * @returns {?String} the expires value or null when no expires attribute.
      */
-    Stream.prototype.expires = function() {
+    Stream.prototype.expires = function () {
         return this.attributes["expires"];
     };
 
@@ -111,17 +111,27 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
      * Returns the rights value.
      * @returns {?String} the rights value or null when no rights attribute.
      */
-    Stream.prototype.rights = function() {
+    Stream.prototype.rights = function () {
         return this.attributes["rights"];
     };
 
     /**
      * Returns the content.
-     * @returns {?String} the content
+     * @returns {!String} the content
      */
-    Stream.prototype.getContent = function(){
-        return this.value;
+    Stream.prototype.getContent = function (decode, fields) {
+        var result;
+        if (decode == null || decode == false) {
+            result = this.value;
+        } else {
+            var base64 = new Base64(fields);
+            result = new TableData(null,base64.decode(this.value));
+        }
+        return result;
     };
+
+
+
 
     return Stream;
 });
