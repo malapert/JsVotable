@@ -8,7 +8,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * JVotable is distributed in the hope that it will be useful,
+ * JsVotable is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -72,19 +72,19 @@ define(function() {
         var tabBits = [];
         var bufferLength = this.bufferTabBits.length;
         var needBit = Math.ceil((datasize - bufferLength) / 6);
-        for (i = 0; i < bufferLength; i += 1) {
+        for (var i = 0; i < bufferLength; i += 1) {
             tabBits.push(this.bufferTabBits[i]);
         }
         this.bufferTabBits = []; // delete old data
 
-        for (i = 0; i < needBit; i += 1) {
+        for (var i = 0; i < needBit; i += 1) {
 
             if (stream.charCodeAt(this.ptrStream) == 10) { // Line Feed (Fin de ligne)
                 i -= 1;
             } else {
                 var nb = b64ToUint6(stream.charCodeAt(this.ptrStream));
 
-                for (z = 32; z > 0; z >>= 1) {
+                for (var z = 32; z > 0; z >>= 1) {
                     if (tabBits.length !== datasize) {
                         tabBits.push(((nb & z) === z) ? "1" : "0");
                     } else {
@@ -174,7 +174,6 @@ define(function() {
             }
 
         } while (this.ptrStream < streamLength);
-
         return trs;
     };
 

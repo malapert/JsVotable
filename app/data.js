@@ -8,7 +8,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * JVotable is distributed in the hope that it will be useful,
+ * JsVotable is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -62,22 +62,28 @@ define(["./utils","./abstractNode","./tabledata","./binary","./binary2","./fits"
             var element = childNode.childNodes[i];
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
-                if (nodeName == "TABLEDATA") {
-                    data = new TableData(element);
-                } else if (nodeName == "BINARY") {
-                    data = new Binary(element);
-                } else if (nodeName == "BINARY2") {
-                    data = new Binary2(element);
-                } else if (nodeName == "FITS") {
-                    data = new Fits(element);
-                } else if (nodeName == "INFO") {
-                    infos.push(new Info(element));
-                } else {
-                    console.warn("unknown element "+nodeName+" in Data node");
-
+                switch (nodeName) {
+                    case "TABLEDATA":
+                        data = new TableData(element);
+                        break;
+                    case "BINARY":
+                        data = new Binary(element);
+                        break;
+                    case "BINARY2":
+                        data = new Binary2(element);
+                        break;
+                    case "FITS":
+                        data = new Fits(element);
+                        break;
+                    case "INFO":
+                        infos.push(new Info(element));
+                        break;
+                    default:
+                        this.getCache().addWarning("unknown element " + nodeName + " in Data node");
                 }
             }
-        } return [data, infos];
+        }
+        return [data, infos];
     };
         
     Utils.inherits(AbstractNode , Data );

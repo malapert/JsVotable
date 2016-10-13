@@ -8,7 +8,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * JVotable is distributed in the hope that it will be useful,
+ * JsVotable is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -42,12 +42,17 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
      * @param {NodeList} childNode the Td node
      * @exports Td
      * @augments AbstractNode
+     * @param {string} options the value provided while parsing a base64 stream
      * @constructor
      * @author Jean-Christophe Malapert
      */
-    var Td = function(childNode) {
+    var Td = function(childNode,options) {
         AbstractNode.prototype.constructor.call(this, childNode);
-        this.value = (childNode.textContent == null) ? null : childNode.textContent.trim();
+        if (options == null) {
+            this.value = (childNode.textContent == null) ? "" : childNode.textContent.trim();
+        } else {
+            this.value = (options == null) ? "" : options.trim();
+        }
     };
 
     Utils.inherits(AbstractNode , Td );

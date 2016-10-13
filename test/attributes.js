@@ -6,7 +6,7 @@ requirejs.config({
 var assert = require('chai').assert;
 var fs = require('fs');
 var JsVotable = requirejs("../../app/JsVotable");
-var Base64 = requirejs("../../app/base64");
+var Base64 = requirejs("../../app/converter/base64");
 
 describe("Checking attributes and nodes value", function () {
 

@@ -8,7 +8,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * JVotable is distributed in the hope that it will be useful,
+ * JsVotable is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -74,18 +74,24 @@ define(["./utils","./abstractNode","./description","./fieldref","./paramref","./
             var element = childNode.childNodes[i];
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
-                if (nodeName == "DESCRIPTION") {
-                    description = new Description(element);
-                } else if (nodeName == "FIELDref") {
-                    fieldrefs.push(new Fieldref(element));
-                } else if (nodeName == "PARAMref") {
-                    paramrefs.push(new Paramref(element));
-                }  else if (nodeName == "PARAM") {
-                    params.push(new Param(element));
-                } else if (nodeName == "GROUP") {
-                    groups.push(new Group(element));
-                } else {
-                    console.warn("unknown element "+nodeName+" in Group node");
+                switch (nodeName) {
+                    case "DESCRIPTION":
+                        description = new Description(element);
+                        break;
+                    case "FIELDref":
+                        fieldrefs.push(new Fieldref(element));
+                        break;
+                    case "PARAMref":
+                        paramrefs.push(new Paramref(element));
+                        break;
+                    case "PARAM":
+                        params.push(new Param(element));
+                        break;
+                    case "GROUP":
+                        groups.push(new Group(element));
+                        break;
+                    default:
+                        this.getCache().addWarning("unknown element "+nodeName+" in Group node");
                 }
             }
         }

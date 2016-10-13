@@ -8,7 +8,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * JVotable is distributed in the hope that it will be useful,
+ * JsVotable is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -56,7 +56,7 @@ define(["./utils","./abstractNode"], function(Utils, AbstractNode) {
                 if (nodeName == "OPTION") {
                     options.push(new Option(element));
                 }  else {
-                    console.warn("unknown element "+nodeName+" in Option node");
+                    this.getCache().addWarning("unknown element "+nodeName+" in Option node");
                 }
             }
         }

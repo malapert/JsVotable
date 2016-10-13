@@ -8,7 +8,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * JVotable is distributed in the hope that it will be useful,
+ * JsVotable is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -17,8 +17,8 @@
  * along with JVotable.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
 
-define(["./utils","./abstractNode", "./definitions","./info","./resource", "./description","./coosys","./group","./param"],
-    function(Utils, AbstractNode, Definitions, Info, Resource, Description, Coosys, Group, Param) {
+define(["./utils","./abstractNode", "./definitions","./info","./resource", "./description","./coosys","./group","./param","./converter/geojson"],
+    function(Utils, AbstractNode, Definitions, Info, Resource, Description, Coosys, Group, Param, GeoJson) {
 
     /**
      * Contructs a Votable object.
@@ -61,12 +61,10 @@ define(["./utils","./abstractNode", "./definitions","./info","./resource", "./de
      * @augments AbstractNode
      * @constructor
      * @author Jean-Christophe Malapert
-     * @throws {Error} "xml cannot be null"
+     * @throws {Error} can be one of the following errors : "xml cannot be null", "This object is not supported", "his input is not a VOTable"
      */
     var Votable = function(xml) {
-        if(xml == null) {
-            throw new Error("xml cannot be null");
-        }
+        xml = checkInputFormat(xml);
         var childNode = xml.documentElement;
         AbstractNode.prototype.constructor.call(this, childNode);
         var result = parseVotableTag(childNode);
@@ -78,6 +76,36 @@ define(["./utils","./abstractNode", "./definitions","./info","./resource", "./de
         this.groups = result[5];
         this.params = result[6];
     };
+
+    /**
+     * Checks the xml format and converts the xml in a XMLDocument.
+     * The different tests applied to the format are :
+     * <ul>
+     *     <li>checking for a null value</li>
+     *     <li>checking for the type of the input<li>
+     *     <li>checking for VOTABLE tag</li>
+     * </ul>
+     * @param {Object} xml the input
+     * @returns {XMLDocument} the xml document
+     * @throws {Error} can be one of the following errors : "xml cannot be null", "This object is not supported", "his input is not a VOTable"
+     */
+    function checkInputFormat(xml) {
+        if(xml == null) {
+            throw new Error("xml cannot be null");
+        } else if (typeof xml === "string") {
+            var parser = new DOMParser();
+            xml = parser.parseFromString(xml, "application/xml");
+        } else if (xml.documentElement != null) {
+            // everything is fine
+        } else {
+            throw new Error("This object is not supported");
+        }
+        var tag = xml.documentElement.localName;
+        if(tag != 'VOTABLE') {
+            throw new Error("This input is not a VOTable");
+        }
+        return xml;
+    }
 
     /**
      * Parses the VOTable elements and returns the VOTable sequence elements.
@@ -110,22 +138,30 @@ define(["./utils","./abstractNode", "./definitions","./info","./resource", "./de
             var element = root.childNodes[i];
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
-                if (nodeName == "DEFINITIONS") {
-                    definitions = new Definitions(element);
-                } else if (nodeName == "INFO") {
-                    infos.push(new Info(element));
-                } else if (nodeName == "RESOURCE") {
-                    resources.push(new Resource(element));
-                } else if (nodeName == "DESCRIPTION") {
-                    description = new Description(element);
-                } else if (nodeName == "COOSYS") {
-                    coosyss.push(new Coosys(element));
-                } else if (nodeName == "GROUP") {
-                    groups.push(new Group(element));
-                } else if (nodeName == "PARAM") {
-                    params.push(new Param(element));
-                } else {
-                    console.warn("unknown element "+nodeName+" in Votable node");
+                switch (nodeName) {
+                    case "DEFINITIONS":
+                        definitions = new Definitions(element);
+                        break;
+                    case "INFO":
+                        infos.push(new Info(element));
+                        break;
+                    case "RESOURCE":
+                        resources.push(new Resource(element));
+                        break;
+                    case "DESCRIPTION":
+                        description = new Description(element);
+                        break;
+                    case "COOSYS":
+                        coosyss.push(new Coosys(element));
+                        break;
+                    case "GROUP":
+                        groups.push(new Group(element));
+                        break;
+                    case "PARAM":
+                        params.push(new Param(element));
+                        break;
+                    default:
+                        this.getCache().addWarning("unknown element "+nodeName+" in Votable node");
                 }
             }
         }
@@ -244,6 +280,16 @@ define(["./utils","./abstractNode", "./definitions","./info","./resource", "./de
      */
     Votable.prototype.getVotableEltsByName = function(name) {
         return this.getCache().getEltsByName()[name];
+    };
+
+    /**
+     * Converts the VOTable to GeoJSON.
+     * @param {Boolean} option sets to true to get a pretty output of the GeoJSON. By default, option is set to false
+     * @returns {String} the GeoJson output of the VOTable
+     */
+    Votable.prototype.convertToGeoJSon = function(option) {
+        var geoJson = new GeoJson(this);
+        return geoJson.getGeoJSon(option);
     };
 
     return Votable;

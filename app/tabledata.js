@@ -8,7 +8,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * JVotable is distributed in the hope that it will be useful,
+ * JsVotable is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -30,7 +30,7 @@ define(["./utils","./tr","./abstractData"], function(Utils, Tr, AbstractData) {
      *  </xs:complexType>
      *
      * @param {NodeList} childNode the TableData node
-     * @param {Array} the trs provided by {@link Base64#decode} while parsing a base64 stream
+     * @param {Array} options the trs provided by {@link Base64#decode} while parsing a base64 stream
      * @exports TableData
      * @augments AbstractData
      * @constructor
@@ -41,7 +41,10 @@ define(["./utils","./tr","./abstractData"], function(Utils, Tr, AbstractData) {
         if (options == null) {
             this.trs = parseTableData(childNode);
         } else {
-            this.trs = options;
+            this.trs = [];
+            for(var i=0;i<options.length; i++) {
+                this.trs.push(new Tr(null, options[i]));
+            }
         }
     };
 
@@ -59,7 +62,7 @@ define(["./utils","./tr","./abstractData"], function(Utils, Tr, AbstractData) {
                 if (nodeName == "TR") {
                     trs.push(new Tr(element));
                 }  else {
-                    console.warn("unknown element "+nodeName+" in TableData node");
+                    this.getCache().addWarning("unknown element "+nodeName+" in TableData node");
                 }
             }
         }

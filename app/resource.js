@@ -8,7 +8,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * JVotable is distributed in the hope that it will be useful,
+ * JsVotable is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -100,20 +100,28 @@ define(["./utils","./abstractNode","./description","./info","./table","./link","
             var element = childNode.childNodes[i];
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
-                if (nodeName == "DESCRIPTION") {
-                    description = new Description(element);
-                } else if (nodeName == "INFO") {
-                    infos.push(new Info(element));
-                } else if (nodeName == "COOSYS") {
-                    coosyss.push(new Coosys);
-                } else if (nodeName == "GROUP") {
-                    groups.push(new Group);
-                } else if (nodeName == "PARAM") {
-                    params.push(new Param);
-                } else {
-                    end = i;
-                    break;
+                switch (nodeName) {
+                    case "DESCRIPTION":
+                        description = new Description(element);
+                        break;
+                    case "INFO":
+                        infos.push(new Info(element));
+                        break;
+                    case "COOSYS":
+                        coosyss.push(new Coosys);
+                        break;
+                    case "GROUP":
+                        groups.push(new Group);
+                        break;
+                    case "PARAM":
+                        params.push(new Param);
+                        break;
+                    default:
+                        end = i;
                 }
+            }
+            if (end!=0) {
+                break;
             }
         }
         var seqElts = {};
@@ -123,23 +131,30 @@ define(["./utils","./abstractNode","./description","./info","./table","./link","
             var element = childNode.childNodes[i];
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
-                if (nodeName == "LINK") {
-                    if (seqElts.hasOwnProperty("TABLE") || seqElts.hasOwnProperty("RESOURCE")) {
-                        seqElts["LINKS"] = seqLinks;
-                        seqElts["INFOS"] = seqInfos;
-                        abstractSequences.push(seqElts);
-                        seqElts = {};
-                        seqLinks = [];
-                        seqInfos = [];
-                    } else {
-                        seqLinks.push(new Link(element));
-                    }
-                } else if (nodeName == "TABLE") {
-                    seqElts["TABLE"] = new Table(element);
-                } else if (nodeName == "RESOURCE") {
-                    seqElts["RESOURCE"] = new Resource(element);
-                } else if (nodeName == "INFO") {
-                    seqInfos.push(new Info(element));
+                switch (nodeName) {
+                    case "LINK":
+                        if (seqElts.hasOwnProperty("TABLE") || seqElts.hasOwnProperty("RESOURCE")) {
+                            seqElts["LINKS"] = seqLinks;
+                            seqElts["INFOS"] = seqInfos;
+                            abstractSequences.push(seqElts);
+                            seqElts = {};
+                            seqLinks = [];
+                            seqInfos = [];
+                        } else {
+                            seqLinks.push(new Link(element));
+                        }
+                        break;
+                    case "TABLE":
+                        seqElts["TABLE"] = new Table(element);
+                        break;
+                    case "RESOURCE":
+                        seqElts["RESOURCE"] = new Resource(element);
+                        break;
+                    case "INFO":
+                        seqInfos.push(new Info(element));
+                        break;
+                    default:
+                        this.getCache().addWarning("Unkknown element "+nodeName+" in RESOURCE node");
                 }
             }
         }

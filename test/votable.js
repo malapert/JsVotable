@@ -6,15 +6,23 @@ requirejs.config({
 var assert = require('chai').assert;
 var fs = require('fs');
 var JsVotable = requirejs("../../app/JsVotable");
-var Base64 = requirejs("../../app/base64");
+var Base64 = requirejs("../../app/converter/base64");
 
 describe("VOTable parser", function () {
 
     var votable;
     describe("Parsing votable", function () {
 
-        it("it cannot load a VOTable ", function () {
+        it("it cannot load a VOTable with a null object", function () {
             assert.throws(function() { new JsVotable.Votable(null)}, Error, "xml cannot be null");
+        });
+
+        it("it cannot load a VOTable as an Object", function () {
+            assert.throws(function() { new JsVotable.Votable(new Object())}, Error, "This object is not supported");
+        });
+
+        it("it detects a no VOTable ", function () {
+            assert.throws(function() { new JsVotable.Votable("<test>Hello</test>")}, Error, "This input is not a VOTable");
         });
 
         it("it loads a VOTable from http", function () {
@@ -99,6 +107,13 @@ describe("VOTable parser", function () {
             assert.ok(true);
         });
 
+        it("it parses a VOTable with STC", function () {
+            var txt = fs.readFileSync(__dirname + '/votable_stc.vot', 'utf8');
+            var parser = new DOMParser();
+            var xml = parser.parseFromString(txt, "application/xml");
+            var votableTest = new JsVotable.Votable(xml);
+            assert.ok(true);
+        });
     });
 
     describe("Testing cache", function () {

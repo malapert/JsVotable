@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<VOTABLE version="1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:stc="http://www.ivoa.net/xml/STC/stc-v1.30.xsd"
+ xmlns="http://www.ivoa.net/xml/VOTable/v1.2">
+
+  <GROUP utype="stc:AstroCoordSystem" ID="HIP" >
+    <DESCRIPTION>
+           The original Hipparcos catalogue uses different origins for
+           spatial (barycentric) and temporal (geocentric) components. 
+    </DESCRIPTION>
+
+    <!-- The time axis has the position origin at the center of Earth -->
+    <GROUP utype="stc:AstroCoordSystem.TimeFrame" >
+      <PARAM name="TimeScale" datatype="char" arraysize="*"
+             utype="stc:AstroCoordSystem.TimeFrame.TimeScale" value="TT"  />
+      <PARAM name="refPosition" datatype="char" arraysize="*"
+             utype="stc:AstroCoordSystem.TimeFrame.ReferencePosition"
+             value="GEOCENTER" />   <!-- reference position for time -->
+    </GROUP>
+
+    <!-- The spatial frame is barycentric -->
+    <GROUP utype="stc:AstroCoordSystem.SpaceFrame" >
+      <PARAM name="CooFrame" datatype="char" arraysize="*"
+             utype="stc:AstroCoordSystem.SpaceFrame.CoordRefFrame"
+             value="ICRS"  />  <!-- Orientation of spatial axes -->
+      <PARAM name="CooFrameOrigin" datatype="char" arraysize="*"
+             utype="stc:AstroCoordSystem.SpaceFrame.ReferencePosition"
+             value="BARYCENTER" />  <!-- Origin of spatial axes -->
+      <PARAM name="CooType" datatype="char" arraysize="*"
+             utype="stc:AstroCoordSystem.SpaceFrame.CoordFlavor"
+             value="SPHERICAL"  /> <!-- 2-D is the default -->
+    </GROUP>
+  </GROUP>
+
+  <RESOURCE name="hip_main">
+    <TABLE name="hip_main_excerpt">
+      <DESCRIPTION>A (tiny) excerpt from the Hipparcos catalog</DESCRIPTION>
+      <GROUP ID="HIPcoo" utype="stc:AstroCoords" ref="HIP">
+        <PARAM name="Jepoch" datatype="double" unit="yr"
+          utype="stc:AstroCoords.Position.Epoch"
+          value="1991.25" />   <!-- Epoch is a number, see Epoch.Scale -->
+        <PARAM name="epochScale" datatype="char" value="J"
+          utype="stc:AstroCoords.Position.Epoch.Scale"
+          />                   <!-- specifies that Jepoch is Julian -->
+        <FIELDref ref="RA1"/>  <!-- second referencing, optional -->
+        <FIELDref ref="DE1"/>  <!-- second referencing, optional -->
+        <FIELDref ref="pm1"/>  <!-- second referencing, optional -->
+        <FIELDref ref="pm2"/>  <!-- second referencing, optional -->
+      </GROUP>
+      <FIELD name="HIP" ucd="meta.id;meta.main" datatype="int" width="6">
+        <DESCRIPTION>Identifier (HIP number) (H1)</DESCRIPTION>
+      </FIELD>
+      <FIELD name="Vmag" ucd="phot.mag;em.opt.V" datatype="float"
+             width="5" precision="2" unit="mag">
+        <DESCRIPTION>Magnitude in Johnson V (H5)</DESCRIPTION>
+        <VALUES null="" />
+      </FIELD>
+      <FIELD name="RA(ICRS)" ucd="pos.eq.ra;meta.main" ref="HIPcoo"
+             ID="RA1" utype="stc:AstroCoords.Position2D.Value2.C1"
+             datatype="double" width="12" precision="8" unit="deg">
+        <DESCRIPTION>alpha, degrees (ICRS, Epoch=J1991.25) (H8)</DESCRIPTION>
+      </FIELD>
+      <FIELD name="DE(ICRS)" ucd="pos.eq.dec;meta.main" ref="HIPcoo"
+             ID="DE1" utype="stc:AstroCoords.Position2D.Value2.C2"
+             datatype="double" width="12" precision="8" unit="deg">
+        <DESCRIPTION>delta, degrees (ICRS, Epoch=J1991.25) (H9)</DESCRIPTION>
+      </FIELD>
+      <FIELD name="Plx" ucd="pos.parallax.trig" datatype="float" width="7"
+             precision="2" unit="mas">
+        <DESCRIPTION>? Trigonometric parallax (H11)</DESCRIPTION>
+      </FIELD>
+      <FIELD name="pmRA" ucd="pos.pm;pos.eq.ra" ref="HIPcoo"
+             ID="pm1" utype="stc:AstroCoords.Velocity2D.Value2.C1"
+             datatype="double" width="8" precision="2" unit="mas/yr">
+        <DESCRIPTION>Proper motion mu_alpha.cos(delta) ICRS(H12)
+                     (for J1991.25 epoch)</DESCRIPTION>
+      </FIELD>
+      <FIELD name="pmDE" ucd="pos.pm;pos.eq.dec" ref="HIPcoo"
+             ID="pm2" utype="stc:AstroCoords.Velocity2D.Value2.C2"
+             datatype="double" width="8" precision="2" unit="mas/yr">
+        <DESCRIPTION>? Proper motion mu_delta, ICRS (H13)
+                      (for J1991.25 epoch)</DESCRIPTION>
+      </FIELD>
+      <FIELD name="e_Plx" ucd="stat.error" datatype="float" width="6"
+             precision="2" unit="mas">
+        <DESCRIPTION>Standard error in Plx (H16)</DESCRIPTION>
+      </FIELD>
+      <DATA>
+        <TABLEDATA>
+          <TR>
+            <TD>1</TD><TD>9.10</TD><TD>0.00091185</TD><TD>1.08901332</TD>
+            <TD>3.54</TD><TD>-5.20</TD><TD>-1.88</TD><TD>1.39</TD>
+          </TR>
+          <TR>
+            <TD>2</TD><TD>9.27</TD><TD>0.00379737</TD><TD>-19.49883745</TD>
+            <TD>21.90</TD><TD>181.21</TD><TD>-0.93</TD><TD>3.10</TD>
+          </TR>
+          <TR>
+            <TD>3</TD><TD>6.61</TD><TD>0.00500795</TD><TD>38.85928608</TD>
+            <TD>2.81</TD><TD>5.24</TD><TD>-2.91</TD><TD>0.63</TD>
+          </TR>
+          <TR>
+            <TD>4</TD><TD>8.06</TD><TD>0.00838170</TD><TD>-51.89354612</TD>
+            <TD>7.75</TD><TD>62.85</TD><TD>0.16</TD><TD>0.97</TD>
+          </TR>
+          <TR>
+            <TD>5</TD><TD>8.55</TD><TD>0.00996534</TD><TD>-40.59122440</TD>
+            <TD>2.87</TD><TD>2.53</TD><TD>9.07</TD><TD>1.11</TD>
+          </TR>
+        </TABLEDATA>
+      </DATA>
+    </TABLE>
+  </RESOURCE>
+</VOTABLE>

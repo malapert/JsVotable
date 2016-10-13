@@ -8,7 +8,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * JVotable is distributed in the hope that it will be useful,
+ * JsVotable is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -81,22 +81,30 @@ define(["./utils", "./abstractNode", "./description", "./field", "./param", "./g
             var element = childNodes.childNodes[i];
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
-                if (nodeName == "DESCRIPTION") {
-                    description = new Description(element);
-                } else if (nodeName == "FIELD") {
-                    fields.push(new Field(element));
-                } else if (nodeName == "PARAM") {
-                    params.push(new Param(element));
-                } else if (nodeName == "GROUP") {
-                    groups.push(new Group(element));
-                } else if (nodeName == "LINK") {
-                    links.push(new Link(element));
-                } else if (nodeName == "DATA") {
-                    data = new Data(element);
-                } else if (nodeName == "INFO") {
-                    infos.push(new Info(element));
-                } else {
-                    console.warn("unknown element "+nodeName+" in Table node");
+                switch (nodeName) {
+                    case "DESCRIPTION":
+                        description = new Description(element);
+                        break;
+                    case "FIELD":
+                        fields.push(new Field(element));
+                        break;
+                    case "PARAM":
+                        params.push(new Param(element));
+                        break;
+                    case "GROUP":
+                        groups.push(new Group(element));
+                        break;
+                    case "LINK":
+                        links.push(new Link(element));
+                        break;
+                    case "DATA":
+                        data = new Data(element);
+                        break;
+                    case "INFO":
+                        infos.push(new Info(element));
+                        break;
+                    default:
+                        this.getCache().addWarning("unknown element "+nodeName+" in Table node");
                 }
             }
         }

@@ -8,7 +8,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * JVotable is distributed in the hope that it will be useful,
+ * JsVotable is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -26,8 +26,9 @@ define(function() {
      * @author Jean-Christophe Malapert
      */
     var Cache = function () {
-        this.nodeID = {}
+        this.nodeID = {};
         this.nodeName = {};
+        this.warnings = [];
     };
 
     /**
@@ -44,6 +45,14 @@ define(function() {
      */
     Cache.prototype.getEltsByName = function() {
         return this.nodeName;
+    };
+
+    /**
+     * Returns the warnings.
+     * @returns {String[]} the warnings
+     */
+    Cache.prototype.getWarnings = function() {
+        return this.warnings;
     };
 
     /**
@@ -67,6 +76,14 @@ define(function() {
             this.nodeName[name] = [];
             this.nodeName[name].push(node);
         }
+    };
+
+    /**
+     * Stores a new warning;
+     * @param warning warning
+     */
+    Cache.prototype.addWarning = function(warning) {
+        this.warnings.push(warning);
     };
 
     return Cache;

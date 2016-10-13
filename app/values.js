@@ -8,7 +8,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * JVotable is distributed in the hope that it will be useful,
+ * JsVotable is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -73,14 +73,18 @@ define(["./utils","./abstractNode","./min","./max","./option"], function(Utils, 
             var element = childNode.childNodes[i];
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
-                if (nodeName == "MIN") {
-                    min = new Min(element);
-                } else if (nodeName == "MAX") {
-                    max = new Max(element);
-                } else if (nodeName == "OPTION") {
-                    options.push(new Option(element));
-                }  else {
-                    console.warn("unknown element "+nodeName+" in Values node");
+                switch (nodeName) {
+                    case "MIN":
+                        min = new Min(element);
+                        break;
+                    case "MAX":
+                        max = new Max(element);
+                        break;
+                    case "OPTION":
+                        options.push(new Option(element));
+                        break;
+                    default:
+                        this.getCache().addWarning("unknown element "+nodeName+" in Values node");
                 }
             }
         }
