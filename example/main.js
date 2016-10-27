@@ -1,12 +1,11 @@
 require.config({
     paths: {
-        "jquery": "http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min",
+        "jquery": "https://code.jquery.com/jquery-2.2.4.min"
     },
     waitSeconds: 0
 });
-
 /**
- * Mizar widget main
+ * VOtable widget main
  */
 require(["jquery","../app/JsVotable"], function($, JsVotable) {
 

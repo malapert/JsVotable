@@ -52,8 +52,8 @@ define( ["./votable","./binary","./binary2","./coosys","./data","./definitions",
     JsVotable.version = {
         major : 1,
         minor : 1,
-        patch : 0,
-        date : "2016-10-12",
+        patch : 1,
+        date : "2016-10-26",
         toString : function () {
             return this.major+ "." + this.minor + "." + this.patch;
         }
