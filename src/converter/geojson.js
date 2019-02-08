@@ -131,11 +131,11 @@ define([
                 trs = tableData.getTrs();
                 break;
             case Constants.TAG.BINARY2:
-                var binary2 = data.getData();
+                //var binary2 = data.getData();
                 throw new Error("Binary2 not implemented");
                 break;
             case Constants.TAG.FITS:
-                var fits = data.getData();
+                //var fits = data.getData();
                 throw new Error("Fits not implemented");
                 break;
             default:

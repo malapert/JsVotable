@@ -1,7 +1,7 @@
 ({
     name: "../minify/almond",
     include: ["JsVotable"],
-    out: "../JsVotable.min",
+    out: "../JsVotable.min.js",
     optimize: "none",
     api_version:"[TO BE DEFINED]",
     mainConfigFile: "../src/rconfig.js",

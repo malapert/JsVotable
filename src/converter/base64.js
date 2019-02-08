@@ -153,7 +153,6 @@ define(function() {
     Base64.prototype.decode = function(stream) {
         var trs = [];
         var fieldNumber = 0;
-        var tabBits = [];
         var streamLength = stream.length;
         var nbFields = this.fields.length;
         var tds = [];
@@ -271,7 +270,7 @@ define(function() {
 
     function bin2double64(TabBits) {
         'use strict';
-        var buffer, dataview, lenght, binary;
+        var buffer, dataview, binary;
 
         buffer = new ArrayBuffer(8);
         dataview = new DataView(buffer);

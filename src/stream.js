@@ -127,7 +127,7 @@ define([
      */
     Stream.prototype.getContent = function (decode, fields) {
         var result;
-        if (decode == null || decode == false) {
+        if (decode == null || !decode) {
             result = this.value;
         } else {
             var base64 = new Base64(fields);
