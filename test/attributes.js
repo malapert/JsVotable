@@ -5,8 +5,8 @@ requirejs.config({
 });
 var assert = require('chai').assert;
 var fs = require('fs');
-var JsVotable = requirejs("../../app/JsVotable");
-var Base64 = requirejs("../../app/converter/base64");
+var JsVotable = requirejs("../../src/JsVotable");
+var Base64 = requirejs("../../src/converter/base64");
 
 describe("Checking attributes and nodes value", function () {
 
@@ -204,9 +204,7 @@ describe("Checking attributes and nodes value", function () {
 
     });
 
-    var rortable = resource1.getResourcesOrTables()[0];
-    var table = rortable["TABLE"];
-
+    var table = resource1.getResourcesOrTables()[0];
     describe("for table", function () {
         it("it checks name", function () {
             assert.equal(table.name(),"name7");

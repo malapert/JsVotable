@@ -5,8 +5,8 @@ requirejs.config({
 });
 var assert = require('chai').assert;
 var fs = require('fs');
-var JsVotable = requirejs("../../app/JsVotable");
-var Base64 = requirejs("../../app/converter/base64");
+var JsVotable = requirejs("../../src/JsVotable");
+var Base64 = requirejs("../../src/converter/base64");
 
 describe("VOTable transformation", function () {
 
@@ -17,7 +17,7 @@ describe("VOTable transformation", function () {
             var parser = new DOMParser();
             var xml = parser.parseFromString(txt, "application/xml");
             var votableTest = new JsVotable.Votable(xml);
-	        var geojson = votableTest.convertToGeoJSon(true);
+            var geojson = votableTest.convertToGeoJSon(true);
             var GeoJSon = JSON.parse(geojson);            
             assert.equal(GeoJSon.features[0].properties["Notes"],"V10550 DIRECT");
         });

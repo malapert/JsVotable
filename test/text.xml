@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<vot:VOTABLE version="1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vot="http://www.ivoa.net/xml/VOTable/v1.3" xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://www.ivoa.net/xml/VOTable/VOTable-1.3.xsd"> 
+	<vot:COOSYS ID="J2000" equinox="J2000" system="ICRF"/> 
+	<vot:INFO ID="status" name="QUERY_STATUS" value="ERROR">Miriade.rts -> Bad request: body cannot be empty or null, or body is unknown</vot:INFO> 
+	<vot:INFO ID="supplier" name="Supplier" value="Provided by IMCCE/OBSPM/CNRS"/>
+	<vot:RESOURCE name="Miriade.rts">
+		<vot:DESCRIPTION>Miriade - Rise,Transit and Set of Sso</vot:DESCRIPTION> 
+	</vot:RESOURCE> 
+</vot:VOTABLE>
+

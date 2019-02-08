@@ -3,32 +3,36 @@
   "logo": {
     "file": "./jsvotable_logo.png"
   },
-  "version": "1.1.4",
+  "version": "2.0.0",
   "description": "VOTable parser",
   "directories": {
-    "app": "source directory",
+    "src": "source directory",
     "doc": "Documentation",
     "test": "test",
     "example": "some examples",
     "minify": "Uglifies all js scripts"
   },
   "devDependencies": {
+    "brfs": "~1.4.3",
     "chai": "^3.5.0",
     "domparser": "^0.1.1",
+    "http-server": "^0.11.1",
     "ink-docstrap": "^1.3.0",
+    "jquery": "^3.3.1",
     "jsdoc": "^3.4.2",
+    "jsdom": "~9.6.0",
+    "jsdom-global": "~2.1.0",
     "mocha": "^3.1.1",
     "requirejs": "^2.3.2",
     "uglify-js": "^2.7.3",
-    "xmlhttprequest": "^1.8.0",
-    "brfs": "~1.4.3",
-    "jsdom-global": "~2.1.0",
-    "jsdom": "~9.6.0"
+    "xmlhttprequest": "^1.8.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha -r jsdom-global/register --reporter spec",
-    "doc": "./node_modules/.bin/jsdoc -r app -t ./node_modules/ink-docstrap/template/ -d ./doc -R ./README.md",
-    "uglify": "./node_modules/.bin/r.js -o minify/minify.js"
+    "test": "mocha -r jsdom-global/register --reporter spec",
+    "doc": "jsdoc -r src -t ./node_modules/ink-docstrap/template/ -d ./doc -R ./README.md",
+    "start": "http-server -d -o",
+    "build:prod": "r.js -o minify/minify.js api_version=$npm_package_version && uglifyjs JsVotable.min > JsVotable.min.js && rm JsVotable.min",
+    "build:dev": "r.js -o minify/minify.js api_version=$npm_package_version && mv JsVotable.min JsVotable.min.js"    
   },
   "repository": {
     "type": "git",

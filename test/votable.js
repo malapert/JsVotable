@@ -5,8 +5,8 @@ requirejs.config({
 });
 var assert = require('chai').assert;
 var fs = require('fs');
-var JsVotable = requirejs("../../app/JsVotable");
-var Base64 = requirejs("../../app/converter/base64");
+var JsVotable = requirejs("../../src/JsVotable");
+var Base64 = requirejs("../../src/converter/base64");
 
 describe("VOTable parser", function () {
 
@@ -50,12 +50,12 @@ describe("VOTable parser", function () {
             assert.equal(coosys.ID(), "COOSYS");
             assert.equal(coosys.system(), "ICRS");
             assert.equal(coosys.equinox(), "2000.0");
-            assert.equal(coosys.epoch(), "200.0");
+            assert.equal(coosys.epoch(), "2000.0");
         });
 
         it("it parses a resource", function () {
             var resource = votable.getResources()[0];
-            var table = resource.getResourcesOrTables()[0]["TABLE"];
+            var table = resource.getResourcesOrTables()[0];
             var fields = table.getFields();
             assert.equal(fields.length, 22);
             var field4 = table.getFields()[3];
@@ -159,6 +159,20 @@ describe("VOTable parser", function () {
             var content = stream.getContent(true, fields);
             
             //assert.equal(encoding,"base64");
+        });
+
+    });  
+    
+    describe("Reading a Votable with several tables", function () {
+
+        it("it retrieves tables", function () {
+            var txt = fs.readFileSync(__dirname + '/jonathan.vot', 'utf8');
+            var parser = new DOMParser();
+            var xml = parser.parseFromString(txt, "application/xml");
+            var votable = new JsVotable.Votable(xml);
+            var resource = votable.getResources()[0];
+            var tables = resource.getResourcesOrTables();
+            assert.equal(2, tables.length)            
         });
 
     });    

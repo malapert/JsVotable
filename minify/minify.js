@@ -1,21 +1,17 @@
 ({
-	baseUrl: "../app",
-	name: "JsVotable",
-	out: "../JsVotable.min.js",
-	optimize: "uglify2",
-	onBuildWrite: function ( name, path, contents )
-	{
-		contents = contents
-			.replace( /define\s*\([^{]*?{/, "" )
-			.replace( /\s*return\s+[^\}]+(\}\);[^\w\}]*)$/, "" )
-			.replace( /\}\);[^}\w]*$/, "" );
-
-		return contents;
-	},
-	wrap: {
-		start: "(function() {",
-		end: "\nreturn JsVotable; }());"
-	},
+    name: "../minify/almond",
+    include: ["JsVotable"],
+    out: "../JsVotable.min",
+    optimize: "none",
+    api_version:"[TO BE DEFINED]",
+    mainConfigFile: "../src/rconfig.js",
+    onBuildRead: function (moduleName, path, contents) {
+        //Always return a value.
+        //This is just a contrived example.
+        return contents.replace(/\[VERSION_API\]/g, this.api_version);
+    },		
+	// optimize: "uglify2",
+	preserveLicenseComments: false,
 	uglify2: {
 		//Example of a specialized config. If you are fine
 		//with the default options, no need to specify
@@ -24,10 +20,11 @@
 			beautify: false
 		},
 		compress: {
-			unsafe: true,
+			unsafe: false,
+			dead_code: false,
 		},
 		warnings: true,
 		mangle: true
-	},
+	}
 
-})
+});

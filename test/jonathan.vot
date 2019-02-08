@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<vot:VOTABLE version="1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vot="http://www.ivoa.net/xml/VOTable/v1.3" xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://www.ivoa.net/xml/VOTable/VOTable-1.3.xsd">
+<vot:COOSYS ID="J2000" equinox="J2000" system="ICRF"/>
+<vot:INFO ID="status" name="QUERY_STATUS" value="OK"/>
+<vot:INFO ID="ticket" name="Ticket" value="1549571012909"/>
+<vot:INFO ID="supplier" name="Supplier" value="Provided by IMCCE/OBSPM/CNRS"/>
+<vot:RESOURCE name="Miriade.rts"><vot:DESCRIPTION>Miriade - Rise, Transit and Set of Sso</vot:DESCRIPTION>
+<vot:PARAM ID="bodies" name="bodies" datatype="char" ucd="meta.id" arraysize="*" value="11,10"/>
+<vot:PARAM ID="startdate" name="startDate" datatype="char" ucd="time.start" arraysize="*" value="2458521.5"/>
+<vot:PARAM ID="nbdate" name="nbDate" datatype="int" ucd="time.epoch;meta.number" value="1"/>
+<vot:PARAM ID="step" name="stepSize" datatype="int" ucd="time.interval" unit="d" value="1"/>
+<vot:PARAM ID="longitude" name="Longitude" datatype="float" ucd="earth.longitude" unit="deg" value=""/>
+<vot:PARAM ID="latitude" name="Latitude" datatype="float" ucd="earth.latitude" unit="deg" value=""/>
+<vot:PARAM ID="tz" name="TimeZone" datatype="int" ucd="time.interval" unit="h" value="0"/>
+<vot:TABLE ID="Miriade.rts.Sun" name="Sun RTS" nrows="1"><vot:DESCRIPTION>Rise, transit and set of Sun</vot:DESCRIPTION>
+<vot:PARAM ID="body_id" name="BodyId" datatype="int" ucd="meta.id" value="11"><vot:DESCRIPTION>Body's Id</vot:DESCRIPTION>
+</vot:PARAM>
+<vot:PARAM ID="body_name" name="BodyName" datatype="char" ucd="meta.id" arraysize="*" value="Sun"><vot:DESCRIPTION>Body's name</vot:DESCRIPTION>
+</vot:PARAM>
+<vot:PARAM ID="origin_azimuth" name="OriginOfAzimuth" datatype="char" ucd="meta.note" arraysize="*" value="north"><vot:DESCRIPTION>Origin of azimuth</vot:DESCRIPTION>
+</vot:PARAM>
+<vot:FIELD ID="date" name="Date" ucd="time.epoch" datatype="char" arraysize="*"><vot:DESCRIPTION>Date</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:FIELD ID="riseH" name="Rise Time" ucd="time.epoch" datatype="float" unit="h"><vot:DESCRIPTION>Rise time</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:FIELD ID="riseA" name="Rise Azimuth" ucd="pos.az.azi" datatype="float" unit="deg"><vot:DESCRIPTION>Rise azimuth</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:GROUP name="Rise" ucd=""><vot:DESCRIPTION>Rise time and azimuth</vot:DESCRIPTION>
+<vot:FIELDref ref="riseH"/>
+<vot:FIELDref ref="riseA"/>
+</vot:GROUP>
+<vot:FIELD ID="transitH" name="Transit Time" ucd="time.epoch" datatype="float" unit="h"><vot:DESCRIPTION>Transit time</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:FIELD ID="transitE" name="Transit Elevation" ucd="pos.az.alt" datatype="float" unit="deg"><vot:DESCRIPTION>Transit elevation</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:GROUP name="Transit" ucd=""><vot:DESCRIPTION>Transit time and azimuth</vot:DESCRIPTION>
+<vot:FIELDref ref="transitH"/>
+<vot:FIELDref ref="transitE"/>
+</vot:GROUP>
+<vot:FIELD ID="setH" name="Set Time" ucd="time.epoch" datatype="float" unit="h"><vot:DESCRIPTION>Set time</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:FIELD ID="setA" name="Set Azimuth" ucd="pos.az.azi" datatype="float" unit="deg"><vot:DESCRIPTION>Set azimuth</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:GROUP name="Set" ucd=""><vot:DESCRIPTION>Set time and azimuth</vot:DESCRIPTION>
+<vot:FIELDref ref="setH"/>
+<vot:FIELDref ref="setA"/>
+</vot:GROUP>
+<vot:DATA><vot:TABLEDATA><vot:TR><vot:TD>2019-02-07</vot:TD>
+<vot:TD>6.19292130</vot:TD>
+<vot:TD>105.38346578</vot:TD>
+<vot:TD>12.23516829</vot:TD>
+<vot:TD>254.69532656</vot:TD>
+<vot:TD>18.27736950</vot:TD>
+<vot:TD>254.77393742</vot:TD>
+</vot:TR>
+</vot:TABLEDATA>
+</vot:DATA>
+</vot:TABLE>
+<vot:TABLE ID="Miriade.rts.Moon" name="Moon RTS" nrows="1"><vot:DESCRIPTION>Rise, transit and set of Moon</vot:DESCRIPTION>
+<vot:PARAM ID="body_id" name="BodyId" datatype="int" ucd="meta.id" value="10"><vot:DESCRIPTION>Body's Id</vot:DESCRIPTION>
+</vot:PARAM>
+<vot:PARAM ID="body_name" name="BodyName" datatype="char" ucd="meta.id" arraysize="*" value="Moon"><vot:DESCRIPTION>Body's name</vot:DESCRIPTION>
+</vot:PARAM>
+<vot:PARAM ID="origin_azimuth" name="OriginOfAzimuth" datatype="char" ucd="meta.note" arraysize="*" value="north"><vot:DESCRIPTION>Origin of azimuth</vot:DESCRIPTION>
+</vot:PARAM>
+<vot:FIELD ID="date" name="Date" ucd="time.epoch" datatype="char" arraysize="*"><vot:DESCRIPTION>Date</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:FIELD ID="riseH" name="Rise Time" ucd="time.epoch" datatype="float" unit="h"><vot:DESCRIPTION>Rise time</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:FIELD ID="riseA" name="Rise Azimuth" ucd="pos.az.azi" datatype="float" unit="deg"><vot:DESCRIPTION>Rise azimuth</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:GROUP name="Rise" ucd=""><vot:DESCRIPTION>Rise time and azimuth</vot:DESCRIPTION>
+<vot:FIELDref ref="riseH"/>
+<vot:FIELDref ref="riseA"/>
+</vot:GROUP>
+<vot:FIELD ID="transitH" name="Transit Time" ucd="time.epoch" datatype="float" unit="h"><vot:DESCRIPTION>Transit time</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:FIELD ID="transitE" name="Transit Elevation" ucd="pos.az.alt" datatype="float" unit="deg"><vot:DESCRIPTION>Transit elevation</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:GROUP name="Transit" ucd=""><vot:DESCRIPTION>Transit time and azimuth</vot:DESCRIPTION>
+<vot:FIELDref ref="transitH"/>
+<vot:FIELDref ref="transitE"/>
+</vot:GROUP>
+<vot:FIELD ID="setH" name="Set Time" ucd="time.epoch" datatype="float" unit="h"><vot:DESCRIPTION>Set time</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:FIELD ID="setA" name="Set Azimuth" ucd="pos.az.azi" datatype="float" unit="deg"><vot:DESCRIPTION>Set azimuth</vot:DESCRIPTION>
+</vot:FIELD>
+<vot:GROUP name="Set" ucd=""><vot:DESCRIPTION>Set time and azimuth</vot:DESCRIPTION>
+<vot:FIELDref ref="setH"/>
+<vot:FIELDref ref="setA"/>
+</vot:GROUP>
+<vot:DATA><vot:TABLEDATA><vot:TR><vot:TD>2019-02-07</vot:TD>
+<vot:TD>8.04555901</vot:TD>
+<vot:TD>99.58882671</vot:TD>
+<vot:TD>14.20285552</vot:TD>
+<vot:TD>261.29983323</vot:TD>
+<vot:TD>20.35934239</vot:TD>
+<vot:TD>262.48439651</vot:TD>
+</vot:TR>
+</vot:TABLEDATA>
+</vot:DATA>
+</vot:TABLE>
+</vot:RESOURCE>
+</vot:VOTABLE>

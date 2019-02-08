@@ -1,102 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script
-            src="https://code.jquery.com/jquery-2.2.4.min.js"
-            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-            crossorigin="anonymous"></script>
-    <script src="../JsVotable.min.js"></script>
-    <script type="text/javascript">
-        window.onload = function(){
-            $('.button').on('click', function(e) {
-                VotableWidget.do_work('myWidget');
-                e.preventDefault();
-            });
-        };
-
-        var VotableWidget = (function(){
-            var self = {};
-
-            function parseVotable(xhr, output) {
-                var outputGroup = "";
-                var votable = new JsVotable.Votable(xhr.responseXML);
-                var groups = votable.getGroups();
-                for (i=0;i<groups.length;i++) {
-                    var group = groups[i];
-                    outputGroup+="<fieldset><legend>"+group.utype()+"</legend>";
-                    var subGroups = group.getGroups();
-                    for(j=0;j<subGroups.length;j++) {
-                        var subGroup = subGroups[j];
-                        outputGroup+="<fieldset><legend>"+subGroup.utype()+"</legend>";
-                        var params = subGroup.getParams();
-                        for(k=0;k<params.length;k++) {
-                            var param = params[k];
-                            outputGroup+=param.name()+" : "+param.value()+"<br/>";
-                        }
-                        outputGroup+="</fieldset>";
-                    }
-                    outputGroup+="</fieldset>";
-                }
-
-                var resource  = votable.getResources()[0];
-                var table = resource.getResourcesOrTables()[0]["TABLE"];
-                var fields = table.getFields();
-                var data = table.getData();
-                if (data!=null && data.getDataImplementationName() == 'TableData') {
-                    output += "<table border='1'>";
-                    var tabledata = data.getData();
-                    var trs = tabledata.getTrs();
-                    output+="<tr>";
-                    for (i =0 ;i<fields.length;i++) {
-                        var field = fields[i];
-                        output+="<th>"+field.name()+"</th>";
-                    }
-                    output+="</tr>";
-                    for(i=0;i<trs.length;i++){
-                        output+="<tr>";
-                        var tr = trs[i];
-                        var tds = tr.getTds();
-                        for (j=0;j<tds.length;j++) {
-                            var td = tds[j];
-                            output+="<td>"+td.getContent()+"</td>";
-                        }
-                        output+="</tr>";
-                    }
-                    output+="</table>";
-
-                } else {
-                    for(i=0;i<fields.length;i++) {
-                        var field = fields[i];
-                        output+="<b>"+field.name()+"</b> : "+field.ucd()+"</br>";
-                    }
-                }
-                return outputGroup+output;
-
-            }
-
-            self.do_work = function(div) {
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', document.getElementById("votableUrl").value, false);
-                xhr.send(null);
-                var output="";
-                if (xhr.status == 200) {
-                    try {
-                        output += parseVotable(xhr, output);
-                    } catch(e) {
-                        output+="Error : "+e;
-                    }
-                } else {
-                    output+="Error when retrieving the VOTable, Please change the URL";
-                }
-
-                document.getElementById(div).innerHTML=output;
-            };
-            return self;
-        })();
-
-    </script>
     <style>
         table {
             font-family: arial, sans-serif;
@@ -115,15 +22,137 @@
         }
     </style>
 </head>
+
 <body>
-<h1>Example 2 : Parsing VOTable with the minified JsVotable</h1>
+    <h1>Example 2 : Parsing VOTable</h1>
 
-URL of VOTable to parse: <input type="text" name="votable" size="100" id="votableUrl" value="http://axel.u-strasbg.fr/HiPSCatService/I/337/gaia/metadata.xml">
+    URL of VOTable to parse: <input type="text" name="votable" size="100" id="votableUrl" value="https://ssp.imcce.fr/webservices/miriade/api/rts.php?-observer=0%200%200.0&-ep=2458521.5&-nbd=1&-body=11,10&-fmt=twilight:0,timerep:decimal,time:second,coordrep:decimal,coord:arcsec,az:North&-lang=fr&-from=sspdev&-extrap=8">
 
-<a class="button" href="#" >
-    <img src="http://findicons.com/files/icons/109/play_stop_pause/128/play1disabled.png" alt="sublit" height="20" width="20"/>Submit
-</a>
-<br/><br/>
-<div id="myWidget"></div>
+    <a class="button" href="#">
+        <img src="http://findicons.com/files/icons/109/play_stop_pause/128/play1disabled.png" alt="sublit" height="20"
+            width="20" />Submit
+    </a>
+    <br /><br />
+    <div id="myWidget"></div>
+    <script type="text/javascript" src="../JsVotable.min.js"></script>
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        var VotableWidget = (function () {
+            var self = {};
+
+            function parseVotable(xhr, output) {
+                var outputGroup = "";
+                var votable = new JsVotable.Votable(xhr.responseXML);
+                var groups = votable.getGroups();
+                for (i = 0; i < groups.length; i++) {
+                    var group = groups[i];
+                    outputGroup += "<fieldset><legend>" + group.utype() + "</legend>";
+                    var subGroups = group.getGroups();
+                    for (j = 0; j < subGroups.length; j++) {
+                        var subGroup = subGroups[j];
+                        outputGroup += "<fieldset><legend>" + subGroup.utype() + "</legend>";
+                        var params = subGroup.getParams();
+                        for (k = 0; k < params.length; k++) {
+                            var param = params[k];
+                            outputGroup += param.name() + " : " + param.value() + "<br/>";
+                        }
+                        outputGroup += "</fieldset>";
+                    }
+                    outputGroup += "</fieldset>";
+                }
+                var infos = votable.getInfos();
+                if(infos != null) {
+                    for (var indexInfo=0 ; indexInfo < infos.length ; indexInfo++) {
+                        var info = infos[indexInfo];
+                        var name = info.name();
+                        var value = info.value();
+                        output = output + "INFO "+name+" = "+value;
+                        var txt = info.getContent();
+                        if(txt != null) {
+                            output = output + ":" + txt;
+                        }
+                        output = output + "<br/>";
+                    }
+                }
+                output = output+"<br/>";
+                var resource = votable.getResources()[0];
+                var description = resource.getDescription();
+                if (description!=null) {
+                    output = output+description.getContent()+"<br/><br/>"
+                }
+                var resourcesOrTables = resource.getResourcesOrTables();
+                for (elt = 0; elt < resourcesOrTables.length; elt++) {
+                    var resourceOrTable = resourcesOrTables[elt];
+                    if (resourceOrTable.getTagName() != JsVotable.Constants.TAG.TABLE) {
+                        // do nothing
+                    } else {
+                        var table = resourceOrTable;
+                        var fields = table.getFields();
+                        var data = table.getData();
+                        if (data != null && data.getDataImplementationName() == JsVotable.Constants.TAG.TABLEDATA) {
+                            var id = table.ID();
+                            if( id != null ) {
+                                output += id + "<br>";
+                            }
+                            output += "<table border='1'>";
+                            var tabledata = data.getData();
+                            var trs = tabledata.getTrs();
+                            output += "<tr>";
+                            for (i = 0; i < fields.length; i++) {
+                                var field = fields[i];
+                                output += "<th>" + field.name() + "</th>";
+                            }
+                            output += "</tr>";
+                            for (i = 0; i < trs.length; i++) {
+                                output += "<tr>";
+                                var tr = trs[i];
+                                var tds = tr.getTds();
+                                for (j = 0; j < tds.length; j++) {
+                                    var td = tds[j];
+                                    output += "<td>" + td.getContent() + "</td>";
+                                }
+                                output += "</tr>";
+                            }
+                            output += "</table><br/>";
+
+                        } else {
+                            for (i = 0; i < fields.length; i++) {
+                                var field = fields[i];
+                                output += "<b>" + field.name() + "</b> : " + field.ucd() + "</br>";
+                            }
+                        }
+                    }
+                }
+
+                return outputGroup + output;
+
+            }
+
+            self.do_work = function (div) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', document.getElementById("votableUrl").value, false);
+                xhr.send(null);
+                var output = "";
+                if (xhr.status == 200) {
+                    try {
+                        output += parseVotable(xhr, output);
+                    } catch (e) {
+                        output += "Error : " + e;
+                    }
+                } else {
+                    output += "Error when retrieving the VOTable, Please change the URL";
+                }
+
+                document.getElementById(div).innerHTML = output;
+            };
+            return self;
+        })();
+
+        $('.button').on('click', function (e) {
+            VotableWidget.do_work('myWidget');
+            e.preventDefault();
+        });        
+    </script>
 </body>
+
 </html>

@@ -5,7 +5,7 @@ requirejs.config({
 });
 var assert = require('chai').assert;
 var fs = require('fs');
-var JsVotable = requirejs("../../app/JsVotable");
+var JsVotable = requirejs("../../src/JsVotable");
 
 describe("Checking version", function () {
 

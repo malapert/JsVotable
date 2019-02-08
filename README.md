@@ -72,14 +72,14 @@ For instance, if you want to load the data from a tabledata, use the following c
 var resource  = votable.getResources()[0];
 
 // gets the table from the resource
-var table = resource.getResourcesOrTables()[0]["TABLE"];
+var table = resource.getResourcesOrTables()[0];
 
 // gets the fields
 var fields = table.getFields();
 
 // gets the data : it could be tabledata, fits, binary or binary2
 var data = table.getData();
-if (data!=null && data.getDataImplementationName() == 'TableData') {
+if (data!=null && data.getDataImplementationName() == JsVotable.TAG.TABLEDATA) {
     var tabledata = data.getData();
     var trs = tabledata.getTrs();    
 }
