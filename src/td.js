@@ -31,7 +31,7 @@ define([
      *      <xs:simpleContent>
      *          <xs:extension base="xs:string">
      *              <!-- xs:attribute name="ref" type="xs:IDREF"/ -->
-                    <xs:annotation><xs:documentation>
+     *              <xs:annotation><xs:documentation>
      *                  The 'encoding' attribute is added here to avoid
      *                  problems of code generators which do not properly
      *                  interpret the TR/TD structures.

@@ -52,17 +52,19 @@ define([
      */
     var Data = function(childNode) {
         AbstractNode.prototype.constructor.call(this, childNode, Constants.TAG.DATA);
-        var result = parseData(childNode);
+        var self = this;
+        var result = parseData(self, childNode);
         this.data = result[0];
         this.infos = result[1];
     };
 
     /**
      * Parses the Data node.
+     * @param {Data} self Data object          
      * @param {NodeList} childNode the Data node
      * @returns {Object.<TableData|Binary|Binary2|Fits, Info[]>} the data
      */
-    var parseData = function(childNode) {
+    var parseData = function(self, childNode) {
         var data;
         var infos = [];
 
@@ -71,23 +73,23 @@ define([
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
                 switch (nodeName) {
-                    case "TABLEDATA":
+                    case Constants.TAG.TABLEDATA:
                         data = new TableData(element);
                         break;
-                    case "BINARY":
+                    case Constants.TAG.BINARY:
                         data = new Binary(element);
                         break;
-                    case "BINARY2":
+                    case Constants.TAG.BINARY2:
                         data = new Binary2(element);
                         break;
-                    case "FITS":
+                    case Constants.TAG.FITS:
                         data = new Fits(element);
                         break;
-                    case "INFO":
+                    case Constants.TAG.INFO:
                         infos.push(new Info(element));
                         break;
                     default:
-                        this.getCache().addWarning("unknown element " + nodeName + " in Data node");
+                        self.getCache().addWarning("unknown element " + nodeName + " in Data node");
                 }
             }
         }
@@ -109,7 +111,7 @@ define([
      * @returns {!string} the name of the data implementation
      */
     Data.prototype.getDataImplementationName = function() {
-        return this.data.getName();
+        return this.data.getTagName();
     };
 
     /**

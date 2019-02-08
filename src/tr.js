@@ -49,7 +49,8 @@ define([
     var Tr = function(childNode, options) {
         AbstractNode.prototype.constructor.call(this, childNode, Constants.TAG.TR);
         if (options == null) {
-            this.tds = parseTr(childNode);
+            var self = this;
+            this.tds = parseTr(self, childNode);
         } else {
             this.tds = [];
             for (var i=0;i<options.length;i++) {
@@ -60,19 +61,20 @@ define([
 
     /**
      * Parses the Tr node.
+     * @param {Tr} self Coosys object          
      * @param {NodeList} childNode the Tr node
      * @returns {!Td[]} an array of Td
      */
-    var parseTr = function(childNode) {
+    var parseTr = function(self, childNode) {
         var tds = [];
         for(var i = 0; childNode!=null && i< childNode.childNodes.length; i++){
             var element = childNode.childNodes[i];
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
-                if (nodeName == "TD") {
+                if (nodeName == Constants.TAG.TD) {
                     tds.push(new Td(element));
                 }  else {
-                    this.getCache().addWarning("unknown element "+nodeName+" in Tr node");
+                    self.getCache().addWarning("unknown element "+nodeName+" in Tr node");
                 }
             }
         }

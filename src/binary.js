@@ -61,7 +61,7 @@ define([
                 if (nodeName == Constants.TAG.STREAM) {
                     stream = new Stream(element);
                 } else {
-                    throw "Unknown element";
+                    throw new Error("Unknown element");
                 }
             }
         }

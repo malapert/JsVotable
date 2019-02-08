@@ -59,7 +59,8 @@ define([
      */
     var Values = function(childNode) {
         AbstractNode.prototype.constructor.call(this, childNode, Constants.TAG.VALUES);
-        var result = parseValuesTag(childNode);
+        var self = this;
+        var result = parseValuesTag(self, childNode);
         this.min = result[0];
         this.max = result[1];
         this.options = result[2];
@@ -69,10 +70,11 @@ define([
     /**
      * Parses the VALUES node.
      *
+     * @param {Values} self Values object          
      * @param {NodeList} childNode the VALUES node
      * @returns {Object.<Min,Max,Option[]>} the values
      */
-    var parseValuesTag = function(childNode) {
+    var parseValuesTag = function(self, childNode) {
         var min;
         var max;
         var options = [];
@@ -81,17 +83,17 @@ define([
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
                 switch (nodeName) {
-                    case "MIN":
+                    case Constants.TAG.MIN:
                         min = new Min(element);
                         break;
-                    case "MAX":
+                    case Constants.TAG.MAX:
                         max = new Max(element);
                         break;
-                    case "OPTION":
+                    case Constants.TAG.OPTION:
                         options.push(new Option(element));
                         break;
                     default:
-                        this.getCache().addWarning("unknown element "+nodeName+" in Values node");
+                        self.getCache().addWarning("unknown element "+nodeName+" in Values node");
                 }
             }
         }

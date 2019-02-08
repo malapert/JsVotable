@@ -43,24 +43,26 @@ define([
      */
     var Fits = function(childNode) {
         AbstractData.prototype.constructor.call(this, childNode, Constants.TAG.FITS);
-        this.stream = parseFits(childNode);
+        var self = this;
+        this.stream = parseFits(self, childNode);
     };
 
     /**
      * Parses the Fits node.
+     * @param {Fits} self Fits object          
      * @param childNode the Fits node
      * @returns {Stream} the stream
      */
-    var parseFits = function(childNode) {
+    var parseFits = function(self, childNode) {
         var stream;
         for(var i = 0; childNode!=null && i< childNode.childNodes.length; i++){
             var element = childNode.childNodes[i];
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
-                if (nodeName == "STREAM") {
+                if (nodeName == Constants.TAG.STREAM) {
                     stream = new Definitions(element);
                 } else {
-                    this.getCache().addWarning("unknown element "+nodeName+" in Fits node");
+                    self.getCache().addWarning("unknown element "+nodeName+" in Fits node");
                 }
             }
         }

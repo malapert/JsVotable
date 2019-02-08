@@ -120,7 +120,6 @@ define([
         var data = table.getData();
         var trs;
         var infos = table.getInfos();
-
         switch (data.getDataImplementationName()) {            
             case Constants.TAG.TABLEDATA:
                 var tableData = data.getData();

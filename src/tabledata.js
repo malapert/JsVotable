@@ -44,7 +44,8 @@ define([
     var TableData = function(childNode, options) {
         AbstractData.prototype.constructor.call(this, childNode, Constants.TAG.TABLEDATA);
         if (options == null) {
-            this.trs = parseTableData(childNode);
+            var self = this;
+            this.trs = parseTableData(self, childNode);
         } else {
             this.trs = [];
             for(var i=0;i<options.length; i++) {
@@ -55,19 +56,20 @@ define([
 
     /**
      * Parses the TableData node.
+     * @param {TableData} self Coosys object          
      * @param {NodeList} childNode the TableData node
      * @returns {Tr[]} A list of Tr object
      */
-    var parseTableData = function(childNode) {
+    var parseTableData = function(self, childNode) {
         var trs = [];
         for(var i = 0; childNode!=null && i< childNode.childNodes.length; i++){
             var element = childNode.childNodes[i];
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
-                if (nodeName == "TR") {
+                if (nodeName == Constants.TAG.TR) {
                     trs.push(new Tr(element));
                 }  else {
-                    this.getCache().addWarning("unknown element "+nodeName+" in TableData node");
+                    self.getCache().addWarning("unknown element "+nodeName+" in TableData node");
                 }
             }
         }

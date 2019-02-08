@@ -45,17 +45,19 @@ define([
      */
     var Definitions = function (childNode) {
         AbstractNode.prototype.constructor.call(this, childNode, Constants.TAG.DEFINITIONS);
-        var result = parseDefinitions(childNode);
+        var self = this;
+        var result = parseDefinitions(self, childNode);
         this.coosys = result[0];
         this.param = result[1];
     };
 
     /**
      * Parses the DEFINITIONS node
+     * @param {Definitions} self Definitions object          
      * @param {NodeList} childNode the DEFINITIONS node
      * @returns {Object.<Coosys[],Param[]>} Returns coosyss, params
      */
-    var parseDefinitions = function(childNode) {
+    var parseDefinitions = function(self, childNode) {
         var coosyss = [];
         var params = [];
 
@@ -64,21 +66,21 @@ define([
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
                 switch (nodeName) {
-                    case "COOSYS":
+                    case Constants.TAG.COOSYS:
                         coosyss.push(new Coosys(element));
                         break;
-                    case "PARAM":
+                    case Constants.TAG.PARAM:
                         params.push(new Param(element));
                         break;
                     default:
-                        this.getCache().addWarning("unknown element "+nodeName+" in Definitions node");
+                        self.getCache().addWarning("unknown element "+nodeName+" in Definitions node");
                 }
-                if (nodeName == "COOSYS") {
+                if (nodeName == Constants.TAG.COOSYS) {
                     coosyss.push(new Coosys(element));
-                } else if (nodeName == "PARAM") {
+                } else if (nodeName == Constants.TAG.PARAM) {
                     params.push(new Param(element));
                 } else {
-                    this.getCache().addWarning("unknown element "+nodeName+" in Definitions node");
+                    self.getCache().addWarning("unknown element "+nodeName+" in Definitions node");
 
                 }
             }

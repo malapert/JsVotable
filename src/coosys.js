@@ -62,24 +62,26 @@ define([
      */
     var Coosys = function(childNode) {
         AbstractNode.prototype.constructor.call(this, childNode, Constants.TAG.COOSYS);
-        this.value = parseCoordinateSystem(childNode);
+        var self = this;
+        this.value = parseCoordinateSystem(self, childNode);
     };
 
     Utils.inherits(AbstractNode , Coosys );
 
     /**
      * Parses the CoordinateSystem node.
+     * @param {Coosys} self Coosys object     
      * @param {NodeList} childNode the CoordinateSystem node
      * @returns {String} the content of CoordinateSysem node
      */
-    var parseCoordinateSystem = function(childNode) {
+    var parseCoordinateSystem = function(self, childNode) {
         var value;
         for(var i = 0; childNode!=null && i< childNode.childNodes.length; i++){
             var element = childNode.childNodes[i];
             if (element!=null && element.nodeType == 3) {
                 value = (element.textContent == null) ? null : element.textContent.trim();
             } else {
-                this.getCache().addWarning("unknown element "+element+" in Coosys node");
+                self.getCache().addWarning("unknown element "+element+" in Coosys node");
             }
         }
         return value;

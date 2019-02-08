@@ -43,15 +43,17 @@ define([
      */
     var Binary2 = function(childNode) {
         AbstractData.prototype.constructor.call(this, childNode, Constants.TAG.BINARY2);
-        this.stream = parseBinary2(childNode);
+        var self = this;
+        this.stream = parseBinary2(self, childNode);
     };
 
     /**
      * Parses the Binary2 node.
+     * @param {Binary2} self Binary2 object     
      * @param {NodeList} childNode the Binary node
      * @returns {!String} the Stream
      */
-    var parseBinary2 = function(childNode) {
+    var parseBinary2 = function(self, childNode) {
         var stream;
         for(var i = 0; childNode!=null && i< childNode.childNodes.length; i++){
             var element = childNode.childNodes[i];
@@ -60,7 +62,7 @@ define([
                 if (nodeName == Constants.TAG.STREAM) {
                     stream = new Definitions(element);
                 } else {
-                    this.getCache().addWarning("unknown element "+nodeName+" in Binary2 node");
+                    self.getCache().addWarning("unknown element "+nodeName+" in Binary2 node");
                 }
             }
         }

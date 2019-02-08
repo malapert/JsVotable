@@ -69,7 +69,8 @@ define([
      */
     var Field = function(childNode) {
         AbstractNode.prototype.constructor.call(this, childNode, Constants.TAG.FIELD);
-        var result = parseField(childNode);
+        var self = this;
+        var result = parseField(self, childNode);
         this.description = result[0];
         this.values = result[1];
         this.links = result[2];
@@ -77,10 +78,11 @@ define([
 
     /**
      * Parses the FIELD node.
+     * @param {Field} self Field object          
      * @param {NodeList} childNode the FIELD node
      * @returns {Object.<Description,Values,Link[]>} an array of description, values, link
      */
-    var parseField = function(childNode) {
+    var parseField = function(self, childNode) {
         var description;
         var values;
         var links = [];
@@ -89,17 +91,17 @@ define([
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
                 switch (nodeName) {
-                    case "DESCRIPTION":
+                    case Constants.TAG.DESCRIPTION:
                         description = new Description(element);
                         break;
-                    case "VALUES":
+                    case Constants.TAG.VALUES:
                         values = new Values(element);
                         break;
-                    case "LINK":
+                    case Constants.TAG.LINK:
                         links.push(new Link(element));
                         break;
                     default:
-                        this.getCache().addWarning("unknown element "+nodeName+" in Field node");
+                        self.getCache().addWarning("unknown element "+nodeName+" in Field node");
                 }
             }
         }

@@ -114,23 +114,23 @@ define([
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
                 switch (nodeName) {
-                    case "DESCRIPTION":
+                    case Constants.TAG.DESCRIPTION:
                         description = new Description(element);
                         nbFound++;
                         break;
-                    case "INFO":
+                    case Constants.TAG.INFO:
                         infos.push(new Info(element));
                         nbFound++;
                         break;
-                    case "COOSYS":
+                    case Constants.TAG.COOSYS:
                         coosyss.push(new Coosys);
                         nbFound++;
                         break;
-                    case "GROUP":
+                    case Constants.TAG.GROUP:
                         groups.push(new Group);
                         nbFound++;
                         break;
-                    case "PARAM":
+                    case Constants.TAG.PARAM:
                         params.push(new Param);
                         nbFound++;
                         break;
@@ -155,10 +155,10 @@ define([
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
                 switch (nodeName) {
-                    case "LINK":
+                    case Constants.TAG.LINK:
                         seqLinks.push(new Link(element));
                         break;
-                    case "TABLE":
+                    case Constants.TAG.TABLE:
                         seqElts["TABLE"] = new Table(element);
                         if(seqLinks.length != 0) {
                             seqElts["LINKS"] = seqLinks;
@@ -174,7 +174,7 @@ define([
                         }     
                         abstractSequences.push(seqElts["TABLE"]);                   
                         break;
-                    case "RESOURCE":
+                    case Constants.TAG.RESOURCE:
                         seqElts["RESOURCE"] = new Resource(element);
                         if(seqLinks.length != 0) {
                             seqElts["LINKS"] = seqLinks;
@@ -190,7 +190,7 @@ define([
                         }  
                         abstractSequences.push(seqElts["RESOURCE"]);                         
                         break;
-                    case "INFO":
+                    case Constants.TAG.INFO:
                         seqInfos.push(new Info(element));
                         if(i == childNode.childNodes.length-1) {
                             abstractSequences.push(seqInfos);

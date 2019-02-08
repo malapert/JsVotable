@@ -78,7 +78,8 @@ define([
         xml = checkInputFormat(xml);
         var childNode = xml.documentElement;
         AbstractNode.prototype.constructor.call(this, childNode, Constants.TAG.VOTABLE);
-        var result = parseVotableTag(childNode);
+        var self = this;
+        var result = parseVotableTag(self, childNode);
         this.definitions = result[0];
         this.infos = result[1];
         this.resources = result[2];
@@ -112,7 +113,7 @@ define([
             throw new Error("This object is not supported");
         }
         var tag = xml.documentElement.localName;
-        if(tag != 'VOTABLE') {
+        if(tag != Constants.TAG.VOTABLE) {
             throw new Error("This input is not a VOTable");
         }
         return xml;
@@ -132,10 +133,11 @@ define([
      *     <li>the list of PARAM elements</li>
      * </ul>
      *
+     * @param {Votable} self Votable object          
      * @param {NodeList} childNode The VOTable node
      * @returns {Object.<Definitions,Info[],Resource[],Description,Coosys[],Group[],Param[]>} The sequence which has been parsed
      */
-    var parseVotableTag = function(childNode) {
+    var parseVotableTag = function(self, childNode) {
         var root = childNode;
         var definitions;
         var infos = [];
@@ -150,29 +152,29 @@ define([
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
                 switch (nodeName) {
-                    case "DEFINITIONS":
+                    case Constants.TAG.DEFINITIONS:
                         definitions = new Definitions(element);
                         break;
-                    case "INFO":
+                    case Constants.TAG.INFO:
                         infos.push(new Info(element));
                         break;
-                    case "RESOURCE":
+                    case Constants.TAG.RESOURCE:
                         resources.push(new Resource(element));
                         break;
-                    case "DESCRIPTION":
+                    case Constants.TAG.DESCRIPTION:
                         description = new Description(element);
                         break;
-                    case "COOSYS":
+                    case Constants.TAG.COOSYS:
                         coosyss.push(new Coosys(element));
                         break;
-                    case "GROUP":
+                    case Constants.TAG.GROUP:
                         groups.push(new Group(element));
                         break;
-                    case "PARAM":
+                    case Constants.TAG.PARAM:
                         params.push(new Param(element));
                         break;
                     default:
-                        this.getCache().addWarning("unknown element "+nodeName+" in Votable node");
+                        self.getCache().addWarning("unknown element "+nodeName+" in Votable node");
                 }
             }
         }

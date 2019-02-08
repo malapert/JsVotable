@@ -77,10 +77,10 @@
     JsVotable.Tr = Tr;
     JsVotable.Values = Values;
     JsVotable.version = {
-        major : 1,
-        minor : 1,
-        patch : 4,
-        date : "2016-10-28",
+        major : 2,
+        minor : 0,
+        patch : 0,
+        date : "2019-02-08",
         toString : function () {
             return this.major+ "." + this.minor + "." + this.patch;
         }

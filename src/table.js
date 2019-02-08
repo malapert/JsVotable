@@ -63,8 +63,8 @@ define([
      */
     var Table = function(childNode) {
         AbstractNode.prototype.constructor.call(this, childNode, Constants.TAG.TABLE);
-
-        var result = parseTable(childNode);
+        var self = this;
+        var result = parseTable(self, childNode);
         this.fields = result[0];
         this.params = result[1];
         this.groups = result[2];
@@ -76,10 +76,11 @@ define([
 
     /**
      * Parses the Table node.
+     * @param {Table} self Table object          
      * @param {NodeList} childNodes the Table node
      * @returns {Object.<Field[],Param[],Group[],Link[],Data,Description,Info[]>} an array of fields, params, groups, links, data, description, infos
      */
-    var parseTable = function(childNodes) {
+    var parseTable = function(self, childNodes) {
         var fields = [];
         var params = [];
         var groups = [];
@@ -92,29 +93,29 @@ define([
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
                 switch (nodeName) {
-                    case "DESCRIPTION":
+                    case Constants.TAG.DESCRIPTION:
                         description = new Description(element);
                         break;
-                    case "FIELD":
+                    case Constants.TAG.FIELD:
                         fields.push(new Field(element));
                         break;
-                    case "PARAM":
+                    case Constants.TAG.PARAM:
                         params.push(new Param(element));
                         break;
-                    case "GROUP":
+                    case Constants.TAG.GROUP:
                         groups.push(new Group(element));
                         break;
-                    case "LINK":
+                    case Constants.TAG.LINK:
                         links.push(new Link(element));
                         break;
-                    case "DATA":
+                    case Constants.TAG.DATA:
                         data = new Data(element);
                         break;
-                    case "INFO":
+                    case Constants.TAG.INFO:
                         infos.push(new Info(element));
                         break;
                     default:
-                        this.getCache().addWarning("unknown element "+nodeName+" in Table node");
+                        self.getCache().addWarning("unknown element "+nodeName+" in Table node");
                 }
             }
         }

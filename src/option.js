@@ -43,24 +43,26 @@ define([
      */
     var Option = function(childNode) {
         AbstractNode.prototype.constructor.call(this, childNode, Constants.TAG.OPTION);
-        this.options = parseOptionTag(childNode);
+        var self = this;
+        this.options = parseOptionTag(self, childNode);
     };
 
     /**
      * Parses the Option node.
+     * @param {Option} self Option object          
      * @param childNode the option node.
      * @returns {Option[]} the list of options
      */
-    var parseOptionTag = function(childNode) {
+    var parseOptionTag = function(self, childNode) {
         var options = [];
         for(var i = 0; childNode!=null && i< childNode.childNodes.length; i++){
             var element = childNode.childNodes[i];
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
-                if (nodeName == "OPTION") {
+                if (nodeName == Constants.TAG.OPTION) {
                     options.push(new Option(element));
                 }  else {
-                    this.getCache().addWarning("unknown element "+nodeName+" in Option node");
+                    self.getCache().addWarning("unknown element "+nodeName+" in Option node");
                 }
             }
         }

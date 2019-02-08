@@ -57,7 +57,8 @@ define([
      */
     var Group = function(childNode) {
         AbstractNode.prototype.constructor.call(this, childNode, Constants.TAG.GROUP);
-        var result = parseGroup(childNode);
+        var self = this;
+        var result = parseGroup(self, childNode);
         this.description = result[0];
         this.fieldrefs = result[1];
         this.paramrefs = result[2];
@@ -67,10 +68,11 @@ define([
 
     /**
      * Parses the GROUP node.
+     * @param {Group} self Group object          
      * @param childNode the GROUP node
      * @returns {Object.<Description, Fieldref[], Paramref[], Param[], Group[]>} An array of description, fieldrefs, paramrefs, params, groups
      */
-    var parseGroup = function(childNode) {
+    var parseGroup = function(self, childNode) {
         var description;
         var fieldrefs = [];
         var paramrefs = [];
@@ -82,23 +84,23 @@ define([
             if (element.nodeType == 1) {
                 var nodeName = element.localName;
                 switch (nodeName) {
-                    case "DESCRIPTION":
+                    case Constants.TAG.DESCRIPTION:
                         description = new Description(element);
                         break;
-                    case "FIELDref":
+                    case Constants.TAG.FIELDref:
                         fieldrefs.push(new Fieldref(element));
                         break;
-                    case "PARAMref":
+                    case Constants.TAG.PARAMref:
                         paramrefs.push(new Paramref(element));
                         break;
-                    case "PARAM":
+                    case Constants.TAG.PARAM:
                         params.push(new Param(element));
                         break;
-                    case "GROUP":
+                    case Constants.TAG.GROUP:
                         groups.push(new Group(element));
                         break;
                     default:
-                        this.getCache().addWarning("unknown element "+nodeName+" in Group node");
+                        self.getCache().addWarning("unknown element "+nodeName+" in Group node");
                 }
             }
         }

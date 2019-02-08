@@ -32,14 +32,9 @@ define([
      */
     var AbstractData = function(childNode, name) {
         AbstractNode.prototype.constructor.call(this, childNode, name);
-        this.name = name;
     };
 
     Utils.inherits(AbstractNode , AbstractData );
-
-    AbstractData.prototype.getName = function() {
-        return this.name;
-    };
 
     return AbstractData;
 });

@@ -10,6 +10,6 @@ var JsVotable = requirejs("../../src/JsVotable");
 describe("Checking version", function () {
 
    it("it checks the version", function () {
-   	assert.equal(JsVotable.version,"1.1.4");
+   	assert.equal(JsVotable.version,"2.0.0");
    });
 });
