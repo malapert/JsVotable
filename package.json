@@ -3,7 +3,7 @@
   "logo": {
     "file": "./jsvotable_logo.png"
   },
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "VOTable parser",
   "directories": {
     "src": "source directory",
@@ -32,7 +32,7 @@
     "doc": "jsdoc -r src -t ./node_modules/ink-docstrap/template/ -d ./doc -R ./README.md",
     "start": "http-server -d -o",
     "build:prod": "r.js -o minify/minify.js api_version=$npm_package_version optimize=uglify2",
-    "build:dev": "r.js -o minify/minify.js api_version=$npm_package_version"    
+    "build:dev": "r.js -o minify/minify.js api_version=$npm_package_version"
   },
   "repository": {
     "type": "git",
