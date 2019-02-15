@@ -4,5 +4,8 @@ require.config({
     include: ["JsVotable"],
     insertRequire: ["JsVotable"],
     out: "../JsVotable.min.js",
-    optimize: "none"
+    optimize: "none",
+    paths: {
+        "JsVotable": "JsVotable"            
+    }	
 });

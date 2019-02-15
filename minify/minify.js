@@ -1,10 +1,13 @@
 ({
-    name: "../minify/almond",
-    include: ["JsVotable"],
+    include: ["../minify/almond","JsVotable"],
     out: "../JsVotable.min.js",
     optimize: "none",
     api_version:"[TO BE DEFINED]",
     mainConfigFile: "../src/rconfig.js",
+    wrap: {
+	startFile: "wrap.start",
+	endFile: "wrap.end"
+    },
     onBuildRead: function (moduleName, path, contents) {
         //Always return a value.
         //This is just a contrived example.

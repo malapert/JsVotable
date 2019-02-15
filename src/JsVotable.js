@@ -79,8 +79,8 @@
     JsVotable.version = {
         major : 2,
         minor : 0,
-        patch : 1,
-        date : "2019-02-08",
+        patch : 2,
+        date : "2019-02-15",
         toString : function () {
             return this.major+ "." + this.minor + "." + this.patch;
         }

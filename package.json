@@ -3,7 +3,7 @@
   "logo": {
     "file": "./jsvotable_logo.png"
   },
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "VOTable parser",
   "directories": {
     "src": "source directory",
